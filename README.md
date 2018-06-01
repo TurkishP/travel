@@ -1,11 +1,11 @@
-[![Slack](https://firebasestorage.googleapis.com/v0/b/firestarter-96e46.appspot.com/o/assets%2Fslack-badge.svg?alt=media&token=3e68acef-3e00-4925-9710-e11cee5923e4)](https://join.slack.com/angularfirebase/shared_invite/MjA2NTgxMTI0MTk2LTE0OTg4NTQ4MDAtMjhhZDIzMjc0Mg)
+[![Slack](https://firebasestorage.googleapis.com/v0/b/travel-96e46.appspot.com/o/assets%2Fslack-badge.svg?alt=media&token=3e68acef-3e00-4925-9710-e11cee5923e4)](https://join.slack.com/angularfirebase/shared_invite/MjA2NTgxMTI0MTk2LTE0OTg4NTQ4MDAtMjhhZDIzMjc0Mg)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-# FireStarter
+# travel
 
-FireStarter is an Angular PWA powered by Firebase. It can serve as a foundation to learn this stack and roll out more complex features.
-- [Live Demo](https://firestarter-96e46.firebaseapp.com/)
+travel is an Angular PWA powered by Firebase. It can serve as a foundation to learn this stack and roll out more complex features.
+- [Live Demo](https://travel-96e46.firebaseapp.com/)
 - [Lessons and Screencasts](https://angularfirebase.com)
 - [Join the Slack Team](https://goo.gl/qF8Q5r)
 
@@ -20,8 +20,8 @@ FireStarter is an Angular PWA powered by Firebase. It can serve as a foundation 
 
 1. Run
 
-- `git clone https://github.com/codediodeio/angular-firestarter.git firestarter`
-- `cd firestarter`
+- `git clone https://github.com/codediodeio/angular-travel.git travel`
+- `cd travel`
 - `npm install`
 
 2. Create a project at https://firebase.google.com/ and grab your web config:

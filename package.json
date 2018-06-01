@@ -1,5 +1,5 @@
 {
-  "name": "firestarter",
+  "name": "travel",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,10 +8,10 @@
     "test": "ng test --watch false",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build:all": "ng build --prod && ng run firestarter:server && npm run webpack:prerender && npm run prerender",
-    "serve:prerender": "http-server dist/firestarter -c-1",
+    "build:all": "ng build --prod && ng run travel:server && npm run webpack:prerender && npm run prerender",
+    "serve:prerender": "http-server dist/travel -c-1",
     "webpack:prerender": "webpack --config webpack.prerender.config.js",
-    "prerender": "node dist/firestarter/prerender.js"
+    "prerender": "node dist/travel/prerender.js"
   },
   "private": true,
   "dependencies": {
@@ -28,9 +28,9 @@
     "@angular/router": "^6.0.1",
     "@angular/service-worker": "^6.0.1",
     "@nguniversal/module-map-ngfactory-loader": "^6.0.0",
-    "angularfire2": "^5.0.0-rc.9",
+    "angularfire2": "^5.0.0-rc.10",
     "core-js": "^2.5.4",
-    "firebase": "^5.0.2",
+    "firebase": "^5.0.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
@@ -47,7 +47,7 @@
     "fs-extra": "^6.0.1",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~1.7.1",
+    "karma": "^2.0.2",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~1.4.2",
     "karma-jasmine": "~1.1.1",

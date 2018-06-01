@@ -9,7 +9,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { firebasePlaceholderConfig } from '../env';
+import { environment } from '../environments/environment';
 
 
 
@@ -22,7 +22,7 @@ describe('AppComponent', () => {
         UploadsModule,
         UiModule,
         NotesModule,
-        AngularFireModule.initializeApp(firebasePlaceholderConfig, 'firestarter'),
+        AngularFireModule.initializeApp(environment.firebase, 'travel'),
         AngularFirestoreModule,
         AngularFireAuthModule,
         AngularFireStorageModule

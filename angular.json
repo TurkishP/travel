@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "firestarter": {
+    "travel": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/firestarter",
+            "outputPath": "dist/travel",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -56,18 +56,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "firestarter:build"
+            "browserTarget": "travel:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "firestarter:build:production"
+              "browserTarget": "travel:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "firestarter:build"
+            "browserTarget": "travel:build"
           }
         },
         "test": {
@@ -103,14 +103,14 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/firestarter-server",
+            "outputPath": "dist/travel-server",
             "main": "src/main.server.ts",
             "tsConfig": "src/tsconfig.server.json"
           }
         }
       }
     },
-    "firestarter-e2e": {
+    "travel-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -118,7 +118,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "firestarter:serve"
+            "devServerTarget": "travel:serve"
           }
         },
         "lint": {
@@ -133,5 +133,5 @@
       }
     }
   },
-  "defaultProject": "firestarter"
+  "defaultProject": "travel"
 }

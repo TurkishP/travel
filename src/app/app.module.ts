@@ -4,9 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
 
-// Firestarter App Modules
+// travel App Modules
 import { CoreModule } from './core/core.module';
 import { UploadsModule } from './uploads/uploads.module';
 import { UiModule } from './ui/ui.module';
@@ -21,7 +20,7 @@ import { AngularFireFunctionsModule } from 'angularfire2/functions';
 
 // See README for Firebase setup instructions
 // 1. Delete Me!
-import { firebasePlaceholderConfig } from '../env';
+import { environment } from '../environments/environment';
 // 2. Add your project credentials to environments/environment.ts
 // 3. Then use it in the imports section below environment.firebase
 
@@ -38,7 +37,7 @@ import { firebasePlaceholderConfig } from '../env';
     UiModule,
     NotesModule,
     UploadsModule,
-    AngularFireModule.initializeApp(firebasePlaceholderConfig, 'firestarter'),
+    AngularFireModule.initializeApp(environment.firebase, 'travel'),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
