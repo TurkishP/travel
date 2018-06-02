@@ -22,14 +22,13 @@ import { environment } from '../environments/environment';
 import { PlanComponent } from './plan/plan.component';
 
 import { MaterialModule } from './material.module';
-import { PlanDetailComponent } from './plan/plan-detail/plan-detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PlanComponent,
-    PlanDetailComponent
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogContentExampleDialog} from './plan/plan-detail/plan-detail.component';
+import { PlanDetailComponent } from './plan/plan-detail/plan-detail.component';
+
 import {    MatAutocompleteModule,
   MatButtonModule,
   MatButtonToggleModule,
@@ -32,7 +35,9 @@ import {    MatAutocompleteModule,
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule } from '@angular/material';
+  MatTooltipModule,
+ } from '@angular/material';
+ 
 
 @NgModule({
   imports: [ MatAutocompleteModule,
@@ -66,7 +71,8 @@ import {    MatAutocompleteModule,
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule, ],
+    MatTooltipModule,
+  BrowserAnimationsModule ],
   exports: [MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -98,6 +104,10 @@ import {    MatAutocompleteModule,
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule,]
+    MatTooltipModule,],
+    entryComponents: [PlanDetailComponent, DialogContentExampleDialog],
+    declarations: [PlanDetailComponent, DialogContentExampleDialog],
+    bootstrap: [PlanDetailComponent],
+    providers: []
 })
 export class MaterialModule { }

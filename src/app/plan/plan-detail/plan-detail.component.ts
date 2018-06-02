@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { PlanService } from '../../core/plan.service';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../core/auth.service';
 import { planfolder } from '../planfolder';
 import { ActivatedRoute } from '@angular/router';
-
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'plan-detail',
@@ -19,6 +19,8 @@ export class PlanDetailComponent implements OnInit {
   constructor(private planService: PlanService,
     public auth: AuthService,
     private route: ActivatedRoute,
+    public dialog: MatDialog,
+    // public dialogRef: MatDialogRef<YourDialog>
   ) { }
 
   ngOnInit() {
@@ -36,4 +38,22 @@ export class PlanDetailComponent implements OnInit {
     this.days = this.planService.getDays(plan_id);
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogContentExampleDialog, {
+      height: '800px',
+      width: '800px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
 }
+
+
+@Component({
+  selector: 'dialog-content',
+  templateUrl: 'dialog-content.html',
+})
+export class DialogContentExampleDialog {}
