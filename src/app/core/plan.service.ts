@@ -10,10 +10,10 @@ import { map } from 'rxjs/operators';
 import { AuthService } from '../core/auth.service';
 
 interface plan {
-  // uid: string;
-  // email?: string | null;
-  // photoURL?: string;
-  // displayName?: string;
+    days: number;
+    img?: string;
+    plan_name: string;
+    uid: string;
 }
 
 
@@ -61,4 +61,5 @@ export class PlanService {
     );
   }
 
+  
 }

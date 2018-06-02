@@ -1,0 +1,24 @@
+
+<mat-form-field>
+    <input matInput placeholder="SEARCH" #search>
+</mat-form-field>
+
+    <div class="searchContents">
+      <div *ngFor="let location of locations | async">
+          <div *ngIf="location.name == search.value">
+
+              <mat-card class="searchCard">
+                      <img mat-card-image src="{{location.img}}">
+                      <div mat-card-avatar class="header-image"></div>
+                      <mat-card-title>{{location.name}}</mat-card-title>
+                      <mat-card-subtitle>{{location.city}} {{location.neighborhood}}</mat-card-subtitle>
+                      <mat-card-content>{{location.content}}</mat-card-content>
+              
+                      <mat-card-actions>
+                              <!-- <button routerLink="/plan-detail/{{plan.plan_id}}" mat-button>EDIT</button> -->
+                              <button mat-button (click)="add(location.id)">ADD</button>
+                      </mat-card-actions>
+              </mat-card>
+          </div>
+      </div>
+    </div>

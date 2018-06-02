@@ -27,21 +27,42 @@
                   <button mat-button *ngIf= "isAuth" (click)="liked()">LIKE</button> -->
                 </mat-card-actions>
             </mat-card>
-       </div>
+      
+       <div *ngFor="let item of array(plan.days); let i = index;">
+        <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Day {{i+1}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  Edit Locations
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <!-- <p>hey come on {{day.id.location}}</p> -->
+              <!-- locations for each day -->
+              <div *ngFor="let location of locations | async">
+                  <div *ngFor="let day of days | async">
+                  <div *ngIf="location.id == day.id && day.day == i+1">
+                      <mat-card class="dayCard">
+                        <img mat-card-image src="{{location.img}}">
+                        <div mat-card-avatar class="header-image"></div>
+                        <mat-card-title>{{location.name}}</mat-card-title>
+                        <mat-card-subtitle>{{location.city}} {{location.neighborhood}}</mat-card-subtitle>
+                        <mat-card-content>{{location.content}}</mat-card-content>
+                
+                        <mat-card-actions>
+                          <!-- <button routerLink="/plan-detail/{{plan.plan_id}}" mat-button>EDIT</button> -->
+                          <!-- <button mat-button (click)="delete(hero.idnum)">DELETE</button> -->
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+                </div>
+              </div>
+              <i mat-dialog-title class="material-icons" md-48 (click)="openDialog(plan.id)">add_circle_outline</i>
+            </mat-expansion-panel>
+          </mat-accordion>
+    </div>
+  </div>
 </div>
-<div *ngFor="let day of days | async">
-    <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Day {{day.id}}
-            </mat-panel-title>
-            <mat-panel-description>
-              Edit Locations
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <p>hey come on {{day.id.location}}</p>
-          <i mat-dialog-title class="material-icons" md-48 (click)="openDialog()">add_circle_outline</i>
-        </mat-expansion-panel>
-      </mat-accordion>
-</div>
+

@@ -21,7 +21,4 @@ export class PlanComponent implements OnInit {
     this.plans = this.planService.getPlans();
   }
 
-  // seeDetail(plan_id : string){
-
-  // }
 }

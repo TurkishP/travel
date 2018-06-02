@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DialogContentExampleDialog} from './plan/plan-detail/plan-detail.component';
+import { SearchPopupComponent} from './plan/plan-detail/search-popup/search-popup.component';
 import { PlanDetailComponent } from './plan/plan-detail/plan-detail.component';
 
 import {    MatAutocompleteModule,
@@ -105,8 +105,8 @@ import {    MatAutocompleteModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,],
-    entryComponents: [PlanDetailComponent, DialogContentExampleDialog],
-    declarations: [PlanDetailComponent, DialogContentExampleDialog],
+    entryComponents: [PlanDetailComponent, SearchPopupComponent],
+    declarations: [PlanDetailComponent, SearchPopupComponent],
     bootstrap: [PlanDetailComponent],
     providers: []
 })
