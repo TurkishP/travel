@@ -8,6 +8,8 @@ import { NotesListComponent } from './notes/notes-list/notes-list.component';
 import { UploadPageComponent } from './uploads/upload-page/upload-page.component';
 
 import { SsrPageComponent } from './ui/ssr-page/ssr-page.component';
+import { PlanComponent } from './plan/plan.component';
+import { PlanDetailComponent } from './plan/plan-detail/plan-detail.component';
 
 
 const routes: Routes = [
@@ -15,8 +17,11 @@ const routes: Routes = [
   { path: 'login', component: UserLoginComponent },
   { path: 'notes', component: NotesListComponent,  canActivate: [AuthGuard] },
   { path: 'uploads',  component: UploadPageComponent,  canActivate: [AuthGuard] },
+  // { path: 'ssr', component: SsrPageComponent },
+  { path: 'plan', component: PlanComponent },
+  { path: 'plan-detail/:plan_id', component: PlanDetailComponent },
 
-  { path: 'ssr', component: SsrPageComponent },
+
 ];
 
 @NgModule({

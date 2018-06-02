@@ -9,7 +9,7 @@ import {
 } from 'angularfire2/firestore';
 import { NotifyService } from './notify.service';
 
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 interface User {
@@ -21,8 +21,8 @@ interface User {
 
 @Injectable()
 export class AuthService {
-  user: Observable<User | null>;
-
+  public user: Observable<User | null>;
+  private uid = new Subject<string>();
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -32,16 +32,28 @@ export class AuthService {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
+          this.afs.doc<User>(`users/${user.uid}`).valueChanges().subscribe(result=>{
+            // this.uid =result;
+            console.log(result);
+          })
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
       })
     );
+
+
+  }
+
+  getUID(): Observable<any>{
+    return this.uid.asObservable();
+    // console.log(this.uid);
+    // return this.uid;
   }
 
   ////// OAuth Methods /////
-
+ 
   googleLogin() {
     const provider = new firebase.auth.GoogleAuthProvider();
     return this.oAuthLogin(provider);

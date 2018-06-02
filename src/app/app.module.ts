@@ -18,16 +18,18 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireFunctionsModule } from 'angularfire2/functions';
 
-// See README for Firebase setup instructions
-// 1. Delete Me!
 import { environment } from '../environments/environment';
-// 2. Add your project credentials to environments/environment.ts
-// 3. Then use it in the imports section below environment.firebase
+import { PlanComponent } from './plan/plan.component';
+
+import { MaterialModule } from './material.module';
+import { PlanDetailComponent } from './plan/plan-detail/plan-detail.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PlanComponent,
+    PlanDetailComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -43,6 +45,7 @@ import { environment } from '../environments/environment';
     AngularFireStorageModule,
     AngularFireFunctionsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    MaterialModule
   ],
   bootstrap: [AppComponent]
 })
