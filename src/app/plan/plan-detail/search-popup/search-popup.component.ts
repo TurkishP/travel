@@ -48,8 +48,8 @@ export class SearchPopupComponent implements OnInit {
     );
 
     // console.log(days.day);
-    this.db.collection('plan_folder').doc(this.data.planID).collection(this.data.Day).doc(locationId).set({
-      // order: ;
+    this.db.collection('plan_folder').doc(this.data.planID).collection('days').doc(this.data.Day).collection('locations').doc(locationId).set({
+      // order: this.data.Order+1
     })
   //   .then(()=>{
   //     this.snackBar.open("ADDED", "Close", {

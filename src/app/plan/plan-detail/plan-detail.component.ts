@@ -41,6 +41,7 @@ export class PlanDetailComponent implements OnInit {
     this.plans = this.planService.getAllPlans();
     this.getPlanID();
     this.getPlanDetails(this.plan_id);
+    console.log(this.plan_id);
   }
 
   getlocations(){
@@ -92,8 +93,9 @@ export class PlanDetailComponent implements OnInit {
 
   }
 
-  deleteLocationInPlan(planId, day, locationId){
-    this.afs.collection('plan_folder').doc(planId).collection(day.toString()).doc(locationId).delete();
+  deleteLocationInPlan(day, locationId){
+    console.log(day, locationId)
+    this.afs.collection('plan_folder').doc(this.plan_id).collection('days').doc(day).collection('locations').doc(locationId).delete();
   }
 
 }
@@ -110,3 +112,58 @@ export class PlanDetailComponent implements OnInit {
 //         return result * sortOrder;
 //     }
 // }
+
+// <div *ngFor="let plan of plans | async">
+//         <div *ngIf="plan.id == plan_id">
+//             <!-- [style.backgroundColor]="'yellow'"  -->
+//             <mat-card >
+//                 <!-- <img mat-card-image src="{{plan.img}}">
+//                 <div mat-card-avatar class="header-image"></div> -->
+//                 <mat-card-title>{{plan.plan_name}}</mat-card-title>
+//                 <!-- <mat-card-title>{{hero.name}}</mat-card-title> -->
+//                 <mat-card-subtitle>Days: {{plan.days}}</mat-card-subtitle>
+//                 <!-- <mat-card-content>{{hero.content}}</mat-card-content> -->
+        
+//                 <mat-card-actions>
+//                   <!-- <button routerLink="/plan-detail/{{plan.plan_id}}" mat-button>EDIT</button> -->
+//                   <!-- <button mat-button (click)="delete(hero.idnum)">DELETE</button>
+//                   <button mat-button *ngIf= "isAuth" (click)="liked()">LIKE</button> -->
+//                 </mat-card-actions>
+//             </mat-card>
+      
+//        <div *ngFor="let item of array(plan.days); let i = index;">
+//         <mat-accordion>
+//             <mat-expansion-panel>
+//               <mat-expansion-panel-header>
+//                 <mat-panel-title>
+//                   Day {{i+1}}
+//                 </mat-panel-title>
+//                 <mat-panel-description>
+//                   Edit Locations
+//                 </mat-panel-description>
+//               </mat-expansion-panel-header>
+//               <!-- <p>hey come on {{day.id.location}}</p> -->
+//               <!-- locations for each day -->
+//               <div *ngFor="let location of locations | async">
+//                   <div *ngFor="let day of days | async">
+//                       <mat-card class="dayCard">
+//                         <img mat-card-image src="{{location.img}}">
+//                         <div mat-card-avatar class="header-image"></div>
+//                         <mat-card-title>{{location.name}}</mat-card-title>
+//                         <mat-card-subtitle>{{location.city}} {{location.neighborhood}}</mat-card-subtitle>
+//                         <mat-card-content>{{location.content}}</mat-card-content>
+                
+//                         <mat-card-actions>
+//                           <!-- <button routerLink="/plan-detail/{{plan.plan_id}}" mat-button>EDIT</button> -->
+//                           <button mat-button (click)="deleteLocationInPlan(plan.id, i+1, location.id)">DELETE</button>
+//                         </mat-card-actions>
+//                     </mat-card>
+//                 </div>
+//               </div>
+//               <i mat-dialog-title class="material-icons" md-48 (click)="openDialog(plan.id, i+1)">add_circle_outline</i>
+//             </mat-expansion-panel>
+//           </mat-accordion>
+//     </div>
+//   </div>
+// </div>
+
