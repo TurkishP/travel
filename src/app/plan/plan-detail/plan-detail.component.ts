@@ -8,6 +8,8 @@ import { AuthService } from '../../core/auth.service';
 import { planfolder } from '../planfolder';
 import { ActivatedRoute } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+
 
 import { SearchPopupComponent } from './search-popup/search-popup.component';
 @Component({
@@ -18,7 +20,7 @@ import { SearchPopupComponent } from './search-popup/search-popup.component';
 export class PlanDetailComponent implements OnInit {
   plans: Observable<any[]>;
   plan_id : string;
-  days: Observable<any[]>;
+  days:any;
   locations: Observable<any[]>;
   
   array(n: number): any[] {
@@ -30,30 +32,56 @@ export class PlanDetailComponent implements OnInit {
     private route: ActivatedRoute,
     public dialog: MatDialog,
     public locationService: LocationService,
+    private afs: AngularFirestore,
+
     // public dialogRef: MatDialogRef<YourDialog>
   ) { }
 
   ngOnInit() {
-    this.plans = this.planService.getPlans();
+    this.plans = this.planService.getAllPlans();
     this.getPlanID();
-    this.getDays(this.plan_id);
-    this.getlocations();
+    this.getPlanDetails(this.plan_id);
   }
 
   getlocations(){
-    this.locations = this.locationService.getLocations();
+    for(let i = 0 ; i<this.days.length;i++){
+      for(let j = 0 ; j<this.days[i].loca.length;j++){
+        console.log(this.planService.getLocaInfo(this.days[i].loca[j].id))
+      }
+    }
   }
 
   getPlanID(): void {
     this.plan_id = this.route.snapshot.paramMap.get('plan_id');
   }
 
-  getDays(plan_id: string){
-    this.days = this.planService.getDays(plan_id);
+  getPlanDetails(plan_id: string){
+     this.planService.getPlanDetails(plan_id)
+     .subscribe(data=>{
+      this.days = data;
+      for(let i = 0 ; i<this.days.length;i++){
+         this.planService.getLoca(this.days[i].plan_id,this.days[i].id)
+         .subscribe(data =>{
+            
+            for(let j = 0;j<data.length;j++){
+              this.planService.getLocaInfo(data[j].id)
+               .ref
+              .get().then(doc=>{
+                data[j].locationData =  doc.data()
+              })
+            }
+            this.days[i].loca  = data;
+            console.log(this.days)
+         })
+         
+      }
+      
+     })
   }
 
-  openDialog() {
+  openDialog(planId, day) {
     const dialogRef = this.dialog.open(SearchPopupComponent, {
+      data:{planID:planId, Day: day},
       height: '90%',
       width: '90%'
     });
@@ -61,7 +89,15 @@ export class PlanDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+
   }
+
+  deleteLocationInPlan(planId, day, locationId){
+    this.afs.collection('plan_folder').doc(planId).collection(day.toString()).doc(locationId).delete();
+  }
+
+}
+
 
 //   dynamicSort(property) {
 //     var sortOrder = 1;
@@ -73,27 +109,4 @@ export class PlanDetailComponent implements OnInit {
 //         var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
 //         return result * sortOrder;
 //     }
-// }
-
-}
-
-
-// @Component({
-//   selector: 'dialog-content',
-//   templateUrl: 'dialog-content.html',
-// })
-// export class DialogContentExampleDialog {
-//   locations: Observable<any[]>;
-//   constructor(public locationService: LocationService){
-
-//   }
-
-//   ngOnInit() {
-//     this.getlocations();
-//   }
-
-//   getlocations(){
-//     this.locations = this.locationService.getLocations();
-//   }
-
 // }

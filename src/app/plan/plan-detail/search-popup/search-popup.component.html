@@ -5,7 +5,7 @@
 
     <div class="searchContents">
       <div *ngFor="let location of locations | async">
-          <div *ngIf="location.name == search.value">
+          <div *ngIf="location.name.includes(search.value)">
 
               <mat-card class="searchCard">
                       <img mat-card-image src="{{location.img}}">

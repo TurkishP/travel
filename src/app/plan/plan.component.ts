@@ -18,7 +18,7 @@ export class PlanComponent implements OnInit {
     public auth: AuthService) { }
 
   ngOnInit() {
-    this.plans = this.planService.getPlans();
+    this.plans = this.planService.getAllPlans();
   }
 
 }

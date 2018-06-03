@@ -5,6 +5,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
 
 //services
 import { AuthService } from '../core/auth.service';
@@ -15,6 +16,38 @@ interface plan {
     plan_name: string;
     uid: string;
 }
+// let db = {
+//   locations:[],
+//   notes:[],
+//   plan_folder:[
+//     {
+//       days:3,
+//       img:"",
+//       plan_name:"",
+//       uid:"",
+//       day:[
+//         {
+//           uid:"",
+//           info:"1일차",
+//           info2:"2018-06-03",
+//           location:[
+//             {
+//               uid:""
+//             },
+//             {
+
+//             }
+//           ]
+//         }
+//       ]
+//     },
+//     {
+
+//     }
+//   ],
+//   reviews:[],
+//   users:[]
+// }
 
 
 @Injectable({
@@ -24,9 +57,10 @@ export class PlanService {
 
   
   plansCollection: AngularFirestoreCollection<any>;
-  planCollection:   AngularFirestoreDocument<any>;
+  planDocument:   Observable<any>;
   private uid: string;
   uidSub : Subscription;
+  private days: number;
 
   constructor(
     private afs: AngularFirestore,
@@ -38,7 +72,7 @@ export class PlanService {
    }
 //this.auth.user.uid
 
-  getPlans(): Observable<any[]> {
+  getAllPlans(): Observable<any[]> {
     // ['added', 'modified', 'removed']
     return this.plansCollection.snapshotChanges().pipe(
       map((actions) => {
@@ -50,8 +84,21 @@ export class PlanService {
     );
   }
 
-  getDays(plan_id: string): Observable<any[]>{
+  getPlanDetails(plan_id: string): Observable<any[]>{
+
     return this.afs.collection('plan_folder').doc(plan_id).collection('days').snapshotChanges().pipe(
+      map((actions)=>{
+        return actions.map((a)=>{
+          const data = a.payload.doc.data();
+          return {id: a.payload.doc.id,plan_id:plan_id, ...data};
+        })
+      })
+    );
+
+  }
+  getLoca(plan_id:string,day_id: string): Observable<any[]>{
+      return this.afs.collection('plan_folder').doc(plan_id).collection('days').doc(day_id).collection('locations').snapshotChanges()
+      .pipe(
       map((actions)=>{
         return actions.map((a)=>{
           const data = a.payload.doc.data();
@@ -59,6 +106,13 @@ export class PlanService {
         })
       })
     );
+  }
+  getLocaInfo(loca_id:string){
+     return this.afs.collection('locations').doc(loca_id)
+    //  .ref
+    //  .get().then(doc=>{
+    //    return doc.data()
+    //  })
   }
 
   
