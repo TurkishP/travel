@@ -22,14 +22,14 @@ import { environment } from '../environments/environment';
 import { PlanComponent } from './plan/plan.component';
 
 import { MaterialModule } from './material.module';
-import { NewLocaPopupComponent } from './new-loca-popup/new-loca-popup.component';
+// import { NewLocaPopupComponent } from './ui/home-page/new-loca-popup/new-loca-popup.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PlanComponent,
-    NewLocaPopupComponent,
+    // NewLocaPopupComponent,
     
   ],
   imports: [
