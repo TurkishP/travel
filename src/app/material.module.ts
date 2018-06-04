@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchPopupComponent} from './plan/plan-detail/search-popup/search-popup.component';
 import { PlanDetailComponent } from './plan/plan-detail/plan-detail.component';
+import { NewLocaPopupComponent } from './ui/home-page/new-loca-popup/new-loca-popup.component';
 
 import {    MatAutocompleteModule,
   MatButtonModule,
@@ -105,8 +106,8 @@ import {    MatAutocompleteModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,],
-    entryComponents: [PlanDetailComponent, SearchPopupComponent],
-    declarations: [PlanDetailComponent, SearchPopupComponent],
+    entryComponents: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent],
+    declarations: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent],
     bootstrap: [PlanDetailComponent],
     providers: []
 })

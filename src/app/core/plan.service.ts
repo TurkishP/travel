@@ -37,10 +37,11 @@ export class PlanService {
   ) {
 
     this.plansCollection = this.afs.collection('plan_folder');
-    this.auth.user.subscribe(result=>{
-      this.uid = result.uid;
-      console.log(this.uid)
-    });
+    // this.uid = this.auth.getUID
+    // this.auth.user.subscribe(result=>{
+    //   this.uid = result.uid;
+    //   console.log(this.uid)
+    // });
 
    }
 

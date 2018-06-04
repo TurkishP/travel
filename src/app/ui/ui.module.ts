@@ -11,9 +11,11 @@ import { NotificationMessageComponent } from './notification-message/notificatio
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { SsrPageComponent } from './ssr-page/ssr-page.component';
+import { MaterialModule } from '../material.module';
+
 
 @NgModule({
-  imports: [CommonModule, RouterModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule,MaterialModule],
   declarations: [
     UserLoginComponent,
     HomePageComponent,
@@ -29,7 +31,8 @@ import { SsrPageComponent } from './ssr-page/ssr-page.component';
     LoadingSpinnerComponent,
     NotificationMessageComponent,
     UserProfileComponent,
-    UserFormComponent
+    UserFormComponent,
+    
   ]
 })
 export class UiModule {}
