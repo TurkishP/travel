@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchPopupComponent} from './plan/plan-detail/search-popup/search-popup.component';
 import { PlanDetailComponent } from './plan/plan-detail/plan-detail.component';
 import { NewLocaPopupComponent } from './ui/home-page/new-loca-popup/new-loca-popup.component';
+import { NewplanPopupComponent } from './plan/plan-detail/newplan-popup/newplan-popup.component';
+
 
 import {    MatAutocompleteModule,
   MatButtonModule,
@@ -106,8 +108,8 @@ import {    MatAutocompleteModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,],
-    entryComponents: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent],
-    declarations: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent],
+    entryComponents: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent],
+    declarations: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent],
     bootstrap: [PlanDetailComponent],
     providers: []
 })

@@ -29,7 +29,6 @@ import { MaterialModule } from './material.module';
   declarations: [
     AppComponent,
     PlanComponent,
-    // NewLocaPopupComponent,
     
   ],
   imports: [

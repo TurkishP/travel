@@ -1,4 +1,13 @@
 <h2>My Plans</h2>
+
+
+<mat-card class="new-plan">
+    <mat-card-actions>
+      <i mat-dialog-title class="material-icons" md-48 (click)="openDialog()">add_circle_outline</i>
+      New Plan
+    </mat-card-actions>
+  </mat-card>
+
 <div *ngFor="let plan of plans | async">
       <div *ngIf="auth.user | async as user">
           <div *ngIf="user.uid == plan.uid">

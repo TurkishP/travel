@@ -4,6 +4,9 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../core/auth.service';
 import { planfolder } from './planfolder';
 import { getMultipleValuesInSingleSelectionError } from '@angular/cdk/collections';
+import { Subscription } from 'rxjs';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { NewplanPopupComponent } from './plan-detail/newplan-popup/newplan-popup.component';
 
 @Component({
   selector: 'plan',
@@ -14,17 +17,34 @@ export class PlanComponent implements OnInit {
 
   plans: Observable<any[]>;
   user: Observable<any>;
-  uid: string;
+  UID: string;
+  uidSUB : Subscription;
 
-  constructor(private planService: PlanService,
-    public auth: AuthService) { }
+  constructor(
+    private planService: PlanService,
+    public auth: AuthService,
+    public dialog: MatDialog,
+  ) { }
 
   ngOnInit() {
-    this.getPlans(this.uid);
+    this.plans = this.planService.getMyPlans();
   }
 
 
-  getPlans(uid:string){
-      this.plans = this.planService.getMyPlans();
+  getPlans(){
+      
+  }
+
+  openDialog(planId, day) {
+    const dialogRef = this.dialog.open(NewplanPopupComponent, {
+      data:{},
+      height: '90%',
+      width: '90%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+
   }
 }

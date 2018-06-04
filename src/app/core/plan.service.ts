@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
+import * as firebase from 'firebase/app';
 
 //services
 import { AuthService } from '../core/auth.service';
@@ -15,6 +16,8 @@ interface plan {
     img?: string;
     plan_name: string;
     uid: string;
+    content: string;
+    timestamp: any;
 }
 
 
@@ -23,13 +26,15 @@ interface plan {
 })
 export class PlanService {
 
-  
+  dateSent: firebase.firestore.FieldValue;
+
   plansCollection: AngularFirestoreCollection<any>;
   planDocument:   Observable<any>;
   private uid: string;
-  uidSub : Subscription;
+  uidSUB : Subscription;
   private days: number;
   public user: any;
+  UID: string;
 
   constructor(
     private afs: AngularFirestore,
@@ -37,20 +42,19 @@ export class PlanService {
   ) {
 
     this.plansCollection = this.afs.collection('plan_folder');
-    // this.uid = this.auth.getUID
-    // this.auth.user.subscribe(result=>{
-    //   this.uid = result.uid;
-    //   console.log(this.uid)
-    // });
+    this.uidSUB = this.auth.UID.subscribe(
+      uid => this.UID = uid
+    )
 
    }
 
+
 getMyPlans2(): Observable<any[]> {
-  return this.afs.collection('plan_foler', ref => ref.where('uid', '==', this.auth.getUID )).snapshotChanges().pipe(
+  return this.afs.collection('plan_foler', ref => ref.where('uid', '==',"Vsd67d49aLbDpG015FILmN9azr03" )).snapshotChanges().pipe(
     map((actions) => {
       return actions.map((a) => {
         const data = a.payload.doc.data();
-        // console.log(data)
+        console.log(a.payload.doc.data())
         return { id: a.payload.doc.id, ...data };
       });
     })
@@ -67,6 +71,23 @@ getMyPlans(): Observable<any[]> {
       })
     );
 }
+
+  newPlan(UID: string, name: string, days: number, content: string){
+    let plan: plan = {
+      plan_name: name,
+      content: content,
+      // img: string;
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      uid: UID,
+      days: days,
+    };
+
+    this.plansCollection.doc(UID.concat(name)).set(plan);
+
+    for(let i=1; i<=days; i++){
+      this.plansCollection.doc(UID.concat(name)).collection('days').doc(i.toString());
+    }
+  }
 
   getOnePlan(plan_id: string): Observable<any>{
     return this.plansCollection.doc(plan_id).valueChanges();

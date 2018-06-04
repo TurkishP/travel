@@ -22,7 +22,11 @@ interface User {
 @Injectable()
 export class AuthService {
   public user: Observable<User | null>;
-  public uid: string;
+  // public uid: string;
+   UID = new Subject<any>();
+   userName = new Subject<any>();
+
+
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -32,24 +36,22 @@ export class AuthService {
     this.user = this.afAuth.authState.pipe(
       switchMap(user => {
         if (user) {
+
           this.afs.doc<User>(`users/${user.uid}`).valueChanges().subscribe(result=>{
-            // this.uid =result;
-            // console.log(result.uid);
-            this.uid = result.uid;
-          })
+            console.log(result.uid, result.displayName)
+            this.UID.next(result.uid);
+            this.userName.next(result.displayName);
+          }
+          );
+
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           return of(null);
         }
       })
-    );
+    );  
 
   }
-
-  getUID(){
-    return this.uid;
-  }
-
   ////// OAuth Methods /////
  
   googleLogin() {

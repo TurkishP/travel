@@ -1,23 +1,17 @@
-<p>
-  new-loca-popup works!
-</p>
-
 <div class="container">
 
-  <!-- <mat-error *ngIf="heroNameFormControl.hasError('Hero Name') && !emailFormControl.hasError('required')">
-    Please enter a valid email address
-  </mat-error> -->
 
   <mat-form-field>
-    <input matInput placeholder="Plan Name" #planname>
+    <input matInput placeholder="Location Name" #name>
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Days" #days>
+    <input matInput placeholder="City" #city>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Neighborhood" #neighborhood>
   </mat-form-field>
   <mat-form-field>
     <input matInput placeholder="Content" #content>
   </mat-form-field>
-
-
   
-<button mat-raised-button class="addHero" (click)="add(planname.value, days.value, content.value)">ADD HERO</button>
+<button mat-raised-button (click)="newLocation(name.value, city.value, neighborhood.value, content.value)">Submit</button>

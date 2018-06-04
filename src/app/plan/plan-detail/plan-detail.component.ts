@@ -12,12 +12,27 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 
 
 import { SearchPopupComponent } from './search-popup/search-popup.component';
+import { Pipe, PipeTransform } from '@angular/core';  
+
+@Pipe({  
+    name: 'range',  
+    pure: false  
+})  
+
 @Component({
   selector: 'plan-detail',
   templateUrl: './plan-detail.component.html',
   styleUrls: ['./plan-detail.component.scss']
 })
-export class PlanDetailComponent implements OnInit {
+export class PlanDetailComponent implements OnInit, PipeTransform{
+  transform(items: any[], quantity: number): any {  
+    items.length = 0;
+    for (let i = 0; i < quantity; i++) {
+      items.push(i);
+    }
+    return items;
+  }  
+  
   plans: Observable<any[]>;
   plan_id : string;
   days:any;
@@ -45,6 +60,9 @@ export class PlanDetailComponent implements OnInit {
     this.getPlanBasicInfo(this.plan_id);
     console.log(this.plan_id);
   }
+   
+
+  //
 
   // getlocations(){
   //   for(let i = 0 ; i<this.days.length;i++){

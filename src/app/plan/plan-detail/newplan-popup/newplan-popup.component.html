@@ -1,0 +1,14 @@
+<div class="container">
+
+
+  <mat-form-field>
+    <input matInput placeholder="Plan Name" #name>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Days" #days>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Content" #content>
+  </mat-form-field>
+  
+<button mat-raised-button (click)="newPlan(name.value, days.value, content.value)">Submit</button>
