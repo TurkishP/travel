@@ -3,6 +3,7 @@ import { PlanService } from '../core/plan.service';
 import { Observable } from 'rxjs';
 import { AuthService } from '../core/auth.service';
 import { planfolder } from './planfolder';
+import { getMultipleValuesInSingleSelectionError } from '@angular/cdk/collections';
 
 @Component({
   selector: 'plan',
@@ -13,12 +14,17 @@ export class PlanComponent implements OnInit {
 
   plans: Observable<any[]>;
   user: Observable<any>;
+  uid: string;
 
   constructor(private planService: PlanService,
     public auth: AuthService) { }
 
   ngOnInit() {
-    this.plans = this.planService.getAllPlans();
+    this.getPlans(this.uid);
   }
 
+
+  getPlans(uid:string){
+      this.plans = this.planService.getMyPlans();
+  }
 }

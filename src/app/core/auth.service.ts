@@ -22,7 +22,7 @@ interface User {
 @Injectable()
 export class AuthService {
   public user: Observable<User | null>;
-  private uid = new Subject<string>();
+  public uid: string;
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -34,7 +34,8 @@ export class AuthService {
         if (user) {
           this.afs.doc<User>(`users/${user.uid}`).valueChanges().subscribe(result=>{
             // this.uid =result;
-            console.log(result);
+            // console.log(result.uid);
+            this.uid = result.uid;
           })
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
@@ -46,10 +47,8 @@ export class AuthService {
 
   }
 
-  getUID(): Observable<any>{
-    return this.uid.asObservable();
-    // console.log(this.uid);
-    // return this.uid;
+  getUID(){
+    return this.uid;
   }
 
   ////// OAuth Methods /////

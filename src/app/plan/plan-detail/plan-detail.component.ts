@@ -22,6 +22,7 @@ export class PlanDetailComponent implements OnInit {
   plan_id : string;
   days:any;
   locations: Observable<any[]>;
+  plan: Observable<any>;
   
   array(n: number): any[] {
     return Array(n);
@@ -38,41 +39,50 @@ export class PlanDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.plans = this.planService.getAllPlans();
+    // this.plans = this.planService.getAllPlans();
     this.getPlanID();
     this.getPlanDetails(this.plan_id);
+    this.getPlanBasicInfo(this.plan_id);
     console.log(this.plan_id);
   }
 
-  getlocations(){
-    for(let i = 0 ; i<this.days.length;i++){
-      for(let j = 0 ; j<this.days[i].loca.length;j++){
-        console.log(this.planService.getLocaInfo(this.days[i].loca[j].id))
-      }
-    }
-  }
+  // getlocations(){
+  //   for(let i = 0 ; i<this.days.length;i++){
+  //     for(let j = 0 ; j<this.days[i].loca.length;j++){
+  //       console.log(this.planService.getLocationInfo(this.days[i].loca[j].id))
+  //     }
+  //   }
+  // }
 
   getPlanID(): void {
     this.plan_id = this.route.snapshot.paramMap.get('plan_id');
   }
 
+  getPlanBasicInfo(plan_id: string){
+    // this.planService.getOnePlan(plan_id).subscribe();
+    this.planService.getOnePlan(plan_id).subscribe(result=>{
+      this.plan = result
+    })
+  }
+
   getPlanDetails(plan_id: string){
-     this.planService.getPlanDetails(plan_id)
+     this.planService.getPlanDays(plan_id)
      .subscribe(data=>{
       this.days = data;
+      console.log(data)
       for(let i = 0 ; i<this.days.length;i++){
-         this.planService.getLoca(this.days[i].plan_id,this.days[i].id)
+         this.planService.getLocations(plan_id,this.days[i].id)
          .subscribe(data =>{
             
             for(let j = 0;j<data.length;j++){
-              this.planService.getLocaInfo(data[j].id)
+              this.planService.getLocationInfo(data[j].id)
                .ref
               .get().then(doc=>{
-                data[j].locationData =  doc.data()
+                data[j].info =  doc.data()
               })
             }
-            this.days[i].loca  = data;
-            console.log(this.days)
+            this.days[i].locations  = data;
+            // console.log(this.days)
          })
          
       }

@@ -20,6 +20,13 @@
       </div>
       </mat-card>
 </div> -->
+<div *ngIf="plan">
+  <mat-card>
+    <mat-card-title>{{plan.plan_name}}</mat-card-title>
+    <mat-card-subtitle>Days: {{plan.days}}</mat-card-subtitle>
+    <mat-card-content>{{plan.content}}</mat-card-content>
+  </mat-card>
+</div>
 
 <div *ngFor="let day of days">
   
@@ -33,17 +40,17 @@
               Edit Locations
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <div *ngFor="let loca of day.loca">
-              <div *ngIf="loca.locationData">
+          <div *ngFor="let location of day.locations">
+              <div *ngIf="location.info">
                   <mat-card class="dayCard">
-                    <img mat-card-image src="{{loca.locationData.img}}">
+                    <img mat-card-image src="{{location.info.img}}">
                     <!-- <div mat-card-avatar class="header-image"></div> -->
-                    <mat-card-title>{{loca.locationData.name}} {{loca.order}}</mat-card-title>
-                    <mat-card-subtitle>{{loca.locationData.city}} {{loca.locationData.neighborhood}}</mat-card-subtitle>
-                    <mat-card-content>{{loca.locationData.content}}</mat-card-content>
+                    <mat-card-title>{{location.info.name}} {{location.order}}</mat-card-title>
+                    <mat-card-subtitle>{{location.info.city}} {{location.info.neighborhood}}</mat-card-subtitle>
+                    <mat-card-content>{{location.info.content}}</mat-card-content>
             
                     <mat-card-actions>
-                      <button mat-button (click)="deleteLocationInPlan(day.id, loca.id)">DELETE</button>
+                      <button mat-button (click)="deleteLocationInPlan(day.id, location.id)">DELETE</button>
                     </mat-card-actions>
                 </mat-card>
               </div>
