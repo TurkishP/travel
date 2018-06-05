@@ -41,8 +41,8 @@ export class AuthService {
             console.log(result.uid, result.displayName)
             this.UID.next(result.uid);
             this.userName.next(result.displayName);
-          }
-          );
+
+          });
 
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
@@ -83,7 +83,9 @@ export class AuthService {
         this.UID.next(credential.user.uid);
         this.userName.next(credential.user.displayName);
         return this.updateUserData(credential.user);
-      })
+      }).then(
+        
+      )
       .catch(error => this.handleError(error));
   }
 

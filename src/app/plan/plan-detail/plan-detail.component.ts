@@ -102,9 +102,7 @@ export class PlanDetailComponent implements OnInit, PipeTransform{
             this.days[i].locations  = data;
             // console.log(this.days)
          })
-         
       }
-      
      })
   }
 

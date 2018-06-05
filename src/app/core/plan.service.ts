@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 
-import { Observable } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import * as firebase from 'firebase/app';
 
 //services
 import { AuthService } from '../core/auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 interface plan {
     days: number;
@@ -29,36 +30,69 @@ export class PlanService {
   dateSent: firebase.firestore.FieldValue;
 
   plansCollection: AngularFirestoreCollection<any>;
-  planDocument:   Observable<any>;
-  private uid: string;
+  planDocument:   Observable<plan[]>;
   uidSUB : Subscription;
   private days: number;
   public user: any;
   UID: string;
-
+  plansChanged = new Subject<plan[]>();
+  plan: Observable<plan[]>;
+  uid$ = new Subject<String>();
+  queyrObservable: Observable<any>;
   constructor(
     private afs: AngularFirestore,
-    public auth: AuthService
+    public auth: AuthService,
+    private afAuth: AngularFireAuth
+
   ) {
 
     this.plansCollection = this.afs.collection('plan_folder');
-    this.uidSUB = this.auth.UID.subscribe(
-      uid => this.UID = uid
+    
+      this.uidSUB = this.auth.UID.subscribe({
+        next(uid){ this.UID = uid}
+      }
     )
 
-   }
+    // this.afAuth.authState.subscribe(user=>{
+    //   if(user) this.UID = user.uid
+    // })
+    this.queyrObservable = this.uid$.pipe(
+      switchMap(uid => 
+        this.afs.collection('plan_folder', ref => ref.where
+        ('uid', '==', uid)).snapshotChanges().pipe(
+          map((actions) => {
+            return actions.map((a) => {
+              const data = a.payload.doc.data();
+              return { id: a.payload.doc.id, ...data };
+            });
+          })
+        )));
+ }
 
+  
+getMyPlans2(){
+  this.queyrObservable = this.uid$.pipe(
+    switchMap(uid => 
+      this.afs.collection('plan_folder', ref => ref.where
+      ('uid', '==', uid)).snapshotChanges().pipe(
+        map((actions) => {
+          return actions.map((a) => {
+            const data = a.payload.doc.data();
+            console.log(a.payload.doc.data())
+            return { id: a.payload.doc.id, ...data };
+          });
+        })
+      )));
 
-getMyPlans2(): Observable<any[]> {
-  return this.afs.collection('plan_foler', ref => ref.where('uid', '==',"Vsd67d49aLbDpG015FILmN9azr03" )).snapshotChanges().pipe(
-    map((actions) => {
-      return actions.map((a) => {
-        const data = a.payload.doc.data();
-        console.log(a.payload.doc.data())
-        return { id: a.payload.doc.id, ...data };
-      });
-    })
-  );
+  // return this.afs.collection('plan_foler', ref => ref.where('uid', '==', this.UID )).snapshotChanges().pipe(
+  //   map((actions) => {
+  //     return actions.map((a) => {
+  //       const data = a.payload.doc.data();
+  //       console.log(a.payload.doc.data())
+  //       return { id: a.payload.doc.id, ...data };
+  //     });
+  //   })
+  // );
 }
 
 getMyPlans(): Observable<any[]> {
@@ -86,9 +120,13 @@ getMyPlans(): Observable<any[]> {
 
     for(let i=1; i<=days; i++){
       this.plansCollection.doc(UID.concat(name)).collection('days').doc(i.toString()).set({
-        loc_count: 0
+        loc_count:0
       });
     }
+  }
+
+  deletePlan(plan_id: string){
+    this.plansCollection.doc(plan_id).delete();
   }
 
   getOnePlan(plan_id: string): Observable<any>{
