@@ -24,24 +24,24 @@ export class NewLocaPopupComponent implements OnInit {
     private loca: LocationService,
     private afAuth: AngularFireAuth
   ) {
-    this.afAuth.authState.subscribe(user=>{
-      if(user) this.UID = user.uid
-    })
+
    }
 
   ngOnInit() {
-    this.uidSUB = this.auth.UID.subscribe(
-      uid => this.UID = uid
-    )
-    this.usernameSUB = this.auth.userName.subscribe(
-      username => this.username = username
-    )
-
-    this.auth.authState
+    // this.uidSUB = this.auth.UID.subscribe(
+    //   uid => this.UID = uid
+    // )
+    // this.usernameSUB = this.auth.userName.subscribe(
+    //   username => this.username = username
+    // )
+    this.afAuth.authState.subscribe(user=>{
+      if(user) this.UID = user.uid
+      this.username = user.displayName
+    })
   }
 
   newLocation(name: string, city: string, neighborhood: string, content: string){
-    console.log(this.UID, name, city, neighborhood, content)
+    console.log(this.UID,this.username,name, city, neighborhood, content)
     this.loca.addLocation(this.username, this.UID, name, city, neighborhood, content);
     
   }
