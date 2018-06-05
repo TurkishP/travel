@@ -1,5 +1,6 @@
 <div class="container">
 
+  
 
   <mat-form-field>
     <input matInput placeholder="Location Name" #name>
@@ -14,4 +15,34 @@
     <input matInput placeholder="Content" #content>
   </mat-form-field>
   
+  <div class="dropzone" dropZone (hovered)="toggleHover($event)" (dropped)="startUpload($event)" [class.hovering]="isHovering">
+
+    <p>Drag and Drop a File</p>
+    <div class="file">
+      <label class="file-label">
+  
+  
+        <input class="file-input" type="file" (change)="startUpload($event.target.files)">
+  
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fa fa-upload"></i>
+          </span>
+          <span class="file-label">
+            or choose a file…
+          </span>
+        </span>
+      </label>
+    </div>
+  </div>
+    
+  <div *ngIf="percentage | async as pct">
+  
+    <progress class="progress is-info" [value]="pct" max="100">
+    </progress>
+  
+    {{ pct | number }}%
+  
+  </div>
+
 <button mat-raised-button (click)="newLocation(name.value, city.value, neighborhood.value, content.value)">Submit</button>

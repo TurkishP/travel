@@ -81,8 +81,6 @@ export class PlanComponent implements OnInit {
     // this.plans.subscribe(result=>{
     //   console.log(result)
     // }
-
-  )
     // this.planSub = this.planService.plansChanged.subscribe(
     //   plan => this.plans = plan);
     // this.plans.subscribe(results=>this.planss = results)

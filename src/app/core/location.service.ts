@@ -46,12 +46,12 @@ export class LocationService {
    );
   }
 
-  addLocation(username: string, uid:string, name:string, city:string, neighborhood: string, content:string ){
+  addLocation(username: string, uid:string, img: any, name:string, city:string, neighborhood: string, content:string ){
     
     let location: location = {
       city: city,
       content: content,
-      // img: string;
+      img: img,
       name: name,
       neighborhood: neighborhood,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
