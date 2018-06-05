@@ -3,6 +3,8 @@ import { AuthService } from '../../../core/auth.service';
 import { LocationService } from '../../../core/location.service';
 
 import { Observable, Subscription } from 'rxjs';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 
 @Component({
   selector: 'new-loca-popup',
@@ -20,7 +22,12 @@ export class NewLocaPopupComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private loca: LocationService,
-  ) { }
+    private afAuth: AngularFireAuth
+  ) {
+    this.afAuth.authState.subscribe(user=>{
+      if(user) this.UID = user.uid
+    })
+   }
 
   ngOnInit() {
     this.uidSUB = this.auth.UID.subscribe(
@@ -29,6 +36,8 @@ export class NewLocaPopupComponent implements OnInit {
     this.usernameSUB = this.auth.userName.subscribe(
       username => this.username = username
     )
+
+    this.auth.authState
   }
 
   newLocation(name: string, city: string, neighborhood: string, content: string){

@@ -79,6 +79,9 @@ export class AuthService {
       .signInWithPopup(provider)
       .then(credential => {
         this.notify.update('Welcome to travel!!!', 'success');
+        console.log(credential.user)
+        this.UID.next(credential.user.uid);
+        this.userName.next(credential.user.displayName);
         return this.updateUserData(credential.user);
       })
       .catch(error => this.handleError(error));
