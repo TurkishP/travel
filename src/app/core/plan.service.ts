@@ -85,7 +85,9 @@ getMyPlans(): Observable<any[]> {
     this.plansCollection.doc(UID.concat(name)).set(plan);
 
     for(let i=1; i<=days; i++){
-      this.plansCollection.doc(UID.concat(name)).collection('days').add();
+      this.plansCollection.doc(UID.concat(name)).collection('days').doc(i.toString()).set({
+        loc_count: 0
+      });
     }
   }
 
