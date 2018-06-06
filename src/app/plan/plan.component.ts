@@ -132,6 +132,9 @@ export class PlanComponent implements OnInit {
   deletePlan(plan_id:string){
     this.planService.deletePlan(plan_id);
   }
-
+  
+  deleteLocation(location_id:string){
+    this.locationService.deleteLocation(location_id);
+  }
 
 }

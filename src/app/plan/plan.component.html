@@ -44,14 +44,12 @@
                             <mat-card-content>{{location.content}}</mat-card-content>
                     
                             <mat-card-actions>
-                                    <!-- <button mat-button (click)="add(location.id)">ADD</button> -->
-                                    <!-- <button mat-button (click)="deleteLocation(location.id)" >DELETE</button> -->
+                                <!-- <button routerLink="/plan-detail/{{plan.id}}" mat-button>EDIT</button> -->
+                                <button mat-button (click)="deleteLocation(location.id)">DELETE</button>
                             </mat-card-actions>
                     </mat-card>
             </div>
           </div>
-    </mat-tab>
-
     </mat-tab>
 
     <mat-tab label="Like">
