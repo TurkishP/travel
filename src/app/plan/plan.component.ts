@@ -8,6 +8,8 @@ import { Subscription } from 'rxjs';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { NewplanPopupComponent } from './plan-detail/newplan-popup/newplan-popup.component';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { LocationService } from '../core/location.service';
+
 
 interface plan {
   days: number;
@@ -18,13 +20,25 @@ interface plan {
   timestamp: any;
 }
 
+interface location {
+  city: string;
+  content: string;
+  img?: string;
+  name: string;
+  neighborhood: string;
+  timestamp: any;
+  username?: string;
+  uid:string;
+}
+
 @Component({
   selector: 'plan',
   templateUrl: './plan.component.html',
   styleUrls: ['./plan.component.scss']
 })
 export class PlanComponent implements OnInit {
-
+  
+  locations: location[]=[];
   plans: plan[]=[];
   user: Observable<any>;
   UID: string;
@@ -37,14 +51,15 @@ export class PlanComponent implements OnInit {
     private planService: PlanService,
     public auth: AuthService,
     public dialog: MatDialog,
-    private afAuth: AngularFireAuth
-
+    private afAuth: AngularFireAuth,
+    public locationService: LocationService
   ) { }
 
   ngOnInit() {
     this.afAuth.authState.subscribe(user=>{
       if(user) {this.UID = user.uid
         this.getPlans();
+        this.getTravel();
         this.planService.uid$.next(this.UID);
         this.dName = user.displayName;
 
@@ -78,7 +93,6 @@ export class PlanComponent implements OnInit {
 
     }))
 
-
     // this.plans = this.planService.getMyPlans();
     // console.log((this.plans))
     // this.plans.subscribe(result=>{
@@ -88,6 +102,12 @@ export class PlanComponent implements OnInit {
     //   plan => this.plans = plan);
     // this.plans.subscribe(results=>this.planss = results)
 
+  }
+  getTravel(){
+    this.locationService.userLocations(this.UID).subscribe((locations =>{
+      this.locations = locations
+    })
+  )
   }
 
   deletePlan(plan_id:string){
