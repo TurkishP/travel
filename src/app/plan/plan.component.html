@@ -1,34 +1,51 @@
-<h2>My Plans</h2>
+<!-- <h2>My Plans</h2> -->
+<h1>{{this.dName}}</h1>
 
 
-<mat-card class="new-plan">
-    <mat-card-actions>
-      <i mat-dialog-title class="material-icons" md-48 (click)="openDialog()">add_circle_outline</i>
-      New Plan
-    </mat-card-actions>
-  </mat-card>
-<!-- <div *ngIf="auth.user | async as user"> -->
-  <div *ngFor="let plan of plans">
-        <!-- <div *ngIf="user.uid == plan.uid"> -->
-              <mat-card class ="OnePlan" >
-                  <!-- <img mat-card-image src="{{hero.storageImg}}"> -->
-                  <!-- <div mat-card-avatar class="header-image"></div> -->
-                  <mat-card-title>{{plan.plan_name | uppercase}}</mat-card-title>
-                  <!-- <mat-card-title>{{hero.name}}</mat-card-title> -->
-                  <mat-card-subtitle>Days: {{plan.days}}</mat-card-subtitle>
-                  <!-- <mat-card-content>{{hero.content}}</mat-card-content> -->
-          
-                  <mat-card-actions>
-                    <button routerLink="/plan-detail/{{plan.id}}" mat-button>EDIT</button>
-                    <button mat-button (click)="deletePlan(plan.id)">DELETE</button>
-                    <!-- <button mat-button *ngIf= "isAuth" (click)="liked()">LIKE</button> -->
-                  </mat-card-actions>
-              </mat-card>
-          
-              
-  </div>
-    <!-- </div> -->
-<!-- </div> -->
+<div id="newPlan">
+      <i mat-dialog-title class="material-icons" md-48 (click)="openDialog()">add_circle_outline</i> New Plan
+</div>
 
-<h2>Shared Plans</h2>
 
+<mat-tab-group class="demo-tab-group">
+    <mat-tab label="Plans">
+      <div class="content">
+        <div *ngFor="let plan of plans">
+            <mat-card class ="OnePlan" >
+                <!-- <img mat-card-image src="{{hero.storageImg}}"> -->
+                <!-- <div mat-card-avatar class="header-image"></div> -->
+                <mat-card-title>{{plan.plan_name | uppercase}}</mat-card-title>
+                <!-- <mat-card-title>{{hero.name}}</mat-card-title> -->
+                <mat-card-subtitle>Days: {{plan.days}}</mat-card-subtitle>
+                <!-- <mat-card-content>{{hero.content}}</mat-card-content> -->
+        
+                <mat-card-actions>
+                  <button routerLink="/plan-detail/{{plan.id}}" mat-button>EDIT</button>
+                  <button mat-button (click)="deletePlan(plan.id)">DELETE</button>
+                  <i id="share" mat-dialog-title class="material-icons" md-18>share</i>
+                  <!-- <button mat-button *ngIf= "isAuth" (click)="liked()">LIKE</button> -->
+                </mat-card-actions>
+            </mat-card>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Locations">
+    </mat-tab>
+
+    <mat-tab label="Friends">
+    </mat-tab>
+
+    <mat-tab label="단골">
+      <!-- my favorite places to go to -->
+    </mat-tab>
+
+    <mat-tab label="Subscribe">
+      <!-- Subscrib to categories of locations -->
+    </mat-tab>
+
+    <mat-tab label="Messages">
+        <!-- Subscrib to categories of locations -->
+      </mat-tab>
+
+</mat-tab-group>
