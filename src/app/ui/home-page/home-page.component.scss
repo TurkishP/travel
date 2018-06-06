@@ -3,9 +3,9 @@
 }
 
 .card{
-    width: 400px;
-    height: 400px;
-    margin: 15px;
+    width: 350px;
+    // height: 350px;
+    margin: 10px;
 }
 
 img{
@@ -16,4 +16,5 @@ img{
 .displayContents{
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 }
