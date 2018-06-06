@@ -1,12 +1,4 @@
-<h1>Welcome to travel!</h1>
-
-<mat-card class="new-location">
-  <mat-card-actions>
-    <i mat-dialog-title class="material-icons" md-48 (click)="openDialog()">add_circle_outline</i>
-    New Location
-  </mat-card-actions>
-</mat-card>
-
+<h1>Excited to discover new places?</h1>
 
 <mat-form-field>
   <input matInput placeholder="SEARCH" #search>
@@ -26,7 +18,9 @@
         
                 <mat-card-actions>
                         <!-- <button mat-button (click)="add(location.id)">ADD</button> -->
-                        <!-- <button mat-button (click)="deleteLocation(location.id)" disabled="true">DELETE</button> -->
+                        <!-- <button mat-button (click)="deleteLocation(location.id)" >DELETE</button> -->
+                        <i id="like" mat-dialog-title class="material-icons" md-48 (click)="like(location.id)">star_border</i>
+
 
                 </mat-card-actions>
         </mat-card>

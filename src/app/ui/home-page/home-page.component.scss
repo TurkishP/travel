@@ -5,7 +5,7 @@
 .card{
     width: 350px;
     // height: 350px;
-    margin: 10px;
+    margin: 10px 10px 10px 0;
 }
 
 img{
@@ -17,4 +17,10 @@ img{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+}
+
+#like{
+    position: relative;
+    margin-left: 300px;
+    top:0;
 }

@@ -2,7 +2,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" routerLink="/">
-      <img src="assets/images/angularfirebase.png" width="30px" alt="travel Angular4 Demo App"/> travel
+      <img src="assets/images/paper-plane.png" width="40px" alt="travel Angular4 Demo App"/> travel
     </a>
 
     <a role="button" class="navbar-burger" (click)="toggleCollapse()" [ngClass]="{'is-active': show}">
@@ -18,24 +18,37 @@
       <!-- <a class="navbar-item" routerLink="/ssr">
         SSR Universal
       </a> -->
-      <a class="navbar-item" routerLink="/notes">
-        Firestore
+      <a class="navbar-item" routerLink="/">
+        Main
       </a>
+      <!-- <a class="navbar-item" routerLink="/notes">
+        Firestore
+      </a> -->
       <!-- <a class="navbar-item" routerLink="/uploads">
         File Uploads
       </a> -->
-      <a class="navbar-item" routerLink="/plan">
+
+
+      <!-- <a class="navbar-item" routerLink="/plan" *ngIf="auth.user | async">
         My Plans
-      </a>
-      <a class="navbar-item" routerLink="/mypage">
+      </a> -->
+
+
+      <!-- 현재 plan이 곧 마이페이지의 역할 -->
+      <a class="navbar-item" routerLink="/plan" *ngIf="auth.user | async">
         {{this.dName}}
       </a>
-      <a class="navbar-item" (click)="logout()">
+      <a class="navbar-item" (click)="logout()" *ngIf="auth.user | async">
         Logout
       </a>
+
+
+    <div class="logButton" *ngIf="!this.dName">
       <a class="navbar-item" routerLink="/login">
         Login
       </a>
+    </div>
+
     </div>
   </div>
 </nav>
