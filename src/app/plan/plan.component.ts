@@ -30,6 +30,7 @@ export class PlanComponent implements OnInit {
   UID: string;
   uidSUB : Subscription;
   planSub: Subscription;
+  dName: string;
   // plans: Observable<any[]>;
 
   constructor(
@@ -45,6 +46,8 @@ export class PlanComponent implements OnInit {
       if(user) {this.UID = user.uid
         this.getPlans();
         this.planService.uid$.next(this.UID);
+        this.dName = user.displayName;
+
       }
       
     })
