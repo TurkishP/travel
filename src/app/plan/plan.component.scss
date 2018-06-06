@@ -1,19 +1,29 @@
 .OnePlan{
     width: 300px;
     margin:10px;
+    
+    &.hovering {
+        border: 2px solid #f16624;
+        color: #dadada !important;
+    }
 }
 
 h1{
     margin-left:30%;
 }
 
-#newPlan{
+#newloc{
+    margin-left: 10px;
+}
+
+#new{
     margin-left: 30%;
     margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 mat-tab-group{
-    width: 83%;
+    width: 80%;
     margin-left: 10%;
 }
 
@@ -25,6 +35,12 @@ mat-tab-group{
 #share{
     margin-left: 60px;
 }
+
+// .container{
+//     width: 80%;
+//     margin-left: 10%;
+//     margin-right: 10%;
+// }
 // mat-tab{
 //     width:33%;
 // }

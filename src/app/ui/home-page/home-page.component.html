@@ -1,13 +1,5 @@
-<h1>Welcome to travel!</h1>
-
-<div *ngIf="auth.user | async">
-<mat-card class="new-location" >
-  <mat-card-actions>
-    <i mat-dialog-title class="material-icons" md-48 (click)="openDialog()">add_circle_outline</i>
-    New Location
-  </mat-card-actions>
-</mat-card>
-</div>
+<div class="container">
+<h1>Excited to discover new places?</h1>
 
 <mat-form-field>
   <input matInput placeholder="SEARCH" #search>
@@ -36,3 +28,7 @@
     </div>
   </div>
 </div>
+
+
+</div>
+<!-- container ends -->

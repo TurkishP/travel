@@ -36,6 +36,7 @@ export class UploadPageComponent {
     this.isHovering = event;
   }
 
+  
   startUpload(event: FileList) {
     // The File object
     const file = event.item(0);

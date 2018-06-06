@@ -9,6 +9,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { NewplanPopupComponent } from './plan-detail/newplan-popup/newplan-popup.component';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LocationService } from '../core/location.service';
+import { NewLocaPopupComponent } from '../ui/home-page/new-loca-popup/new-loca-popup.component';
 
 
 interface plan {
@@ -45,6 +46,7 @@ export class PlanComponent implements OnInit {
   uidSUB : Subscription;
   planSub: Subscription;
   dName: string;
+  isHovering: boolean;
   // plans: Observable<any[]>;
 
   constructor(
@@ -71,12 +73,29 @@ export class PlanComponent implements OnInit {
     // this.uidSUB = this.auth.
 
   }
+  toggleHover(event: boolean) {
+    this.isHovering = event;
+  }
 
-  openDialog(planId, day) {
+
+  openDialog() {
     const dialogRef = this.dialog.open(NewplanPopupComponent, {
       data:{},
       height: '300px',
       width: '280px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+
+  }
+
+  openDialog2() {
+    const dialogRef = this.dialog.open(NewLocaPopupComponent, {
+      data:{},
+      height: '570px',
+      width: '600px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -91,7 +110,7 @@ export class PlanComponent implements OnInit {
       this.plans = plans
       console.log(this.plans)
 
-    }))
+  }))
 
     // this.plans = this.planService.getMyPlans();
     // console.log((this.plans))
