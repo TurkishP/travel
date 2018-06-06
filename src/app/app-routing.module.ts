@@ -22,6 +22,7 @@ const routes: Routes = [
   { path: 'plan-detail/:plan_id', component: PlanDetailComponent },
 
 
+
 ];
 
 @NgModule({

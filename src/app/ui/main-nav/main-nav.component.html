@@ -24,22 +24,24 @@
       <!-- <a class="navbar-item" routerLink="/uploads">
         File Uploads
       </a> -->
-      <a class="navbar-item" routerLink="/plan">
+
+
+      <a class="navbar-item" routerLink="/plan" *ngIf="auth.user | async">
         My Plans
       </a>
-      <a class="navbar-item" routerLink="/mypage">
+      <a class="navbar-item" routerLink="/mypage" *ngIf="auth.user | async">
         {{this.dName}}
       </a>
-      <!-- <div *ngIf="auth.user | async"> -->
-        <a class="navbar-item" (click)="logout()">
-          Logout
-        </a>
-    <!-- </div> -->
-    <!-- <div *ngIf="!auth.user | async"> -->
+      <a class="navbar-item" (click)="logout()" *ngIf="auth.user | async">
+        Logout
+      </a>
+
+
+    <div class="logButton" *ngIf="!this.dName">
       <a class="navbar-item" routerLink="/login">
         Login
       </a>
-    <!-- </div> -->
+    </div>
 
     </div>
   </div>
