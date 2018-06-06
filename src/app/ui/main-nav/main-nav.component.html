@@ -18,18 +18,24 @@
       <!-- <a class="navbar-item" routerLink="/ssr">
         SSR Universal
       </a> -->
-      <a class="navbar-item" routerLink="/notes">
-        Firestore
+      <a class="navbar-item" routerLink="/">
+        Main
       </a>
+      <!-- <a class="navbar-item" routerLink="/notes">
+        Firestore
+      </a> -->
       <!-- <a class="navbar-item" routerLink="/uploads">
         File Uploads
       </a> -->
 
 
-      <a class="navbar-item" routerLink="/plan" *ngIf="auth.user | async">
+      <!-- <a class="navbar-item" routerLink="/plan" *ngIf="auth.user | async">
         My Plans
-      </a>
-      <a class="navbar-item" routerLink="/mypage" *ngIf="auth.user | async">
+      </a> -->
+
+
+      <!-- 현재 plan이 곧 마이페이지의 역할 -->
+      <a class="navbar-item" routerLink="/plan" *ngIf="auth.user | async">
         {{this.dName}}
       </a>
       <a class="navbar-item" (click)="logout()" *ngIf="auth.user | async">

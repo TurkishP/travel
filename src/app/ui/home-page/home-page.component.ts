@@ -3,6 +3,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { NewLocaPopupComponent } from './new-loca-popup/new-loca-popup.component';
 import { LocationService } from '../../core/location.service';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'home-page',
@@ -15,6 +16,7 @@ export class HomePageComponent implements OnInit {
   constructor(    
     public dialog: MatDialog,
     private loca: LocationService,
+    private auth: AuthService,
   ) { }
 
   ngOnInit() {
