@@ -57,8 +57,8 @@ export class PlanComponent implements OnInit {
   openDialog(planId, day) {
     const dialogRef = this.dialog.open(NewplanPopupComponent, {
       data:{},
-      height: '90%',
-      width: '90%'
+      height: '300px',
+      width: '280px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

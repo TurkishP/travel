@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../core/auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'main-nav',
@@ -8,11 +10,24 @@ import { Component, OnInit } from '@angular/core';
 export class MainNavComponent {
 
   show = false;
+  private dName: string;
 
-  constructor() { }
+  constructor(   
+    private afAuth: AngularFireAuth,
+    private auth: AuthService
+  ) {
+    this.afAuth.authState.subscribe(user=>{
+      if(user) {this.dName = user.displayName}
+    })
+   }
 
   toggleCollapse() {
     this.show = !this.show;
   }
 
+
+  logout() {
+    this.auth.signOut();
+    this.dName = "";
+  }
 }

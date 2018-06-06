@@ -29,8 +29,8 @@ export class HomePageComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(NewLocaPopupComponent, {
       data:{},
-      height: '90%',
-      width: '90%'
+      height: '570px',
+      width: '600px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

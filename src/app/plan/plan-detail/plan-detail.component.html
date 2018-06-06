@@ -1,45 +1,45 @@
+<div class="container">
+    <div *ngIf="plan" class="plancard">
+      <mat-card>
+        <mat-card-title>{{plan.plan_name | uppercase }}</mat-card-title>
+        <mat-card-subtitle>Days: {{plan.days}}</mat-card-subtitle>
+        <mat-card-content>{{plan.content}}</mat-card-content>
+      </mat-card>
+    </div>
 
-<div *ngIf="plan">
-  <mat-card>
-    <mat-card-title>{{plan.plan_name | uppercase }}</mat-card-title>
-    <mat-card-subtitle>Days: {{plan.days}}</mat-card-subtitle>
-    <mat-card-content>{{plan.content}}</mat-card-content>
-  </mat-card>
-</div>
+    <div *ngFor="let day of days">
+      <!-- <div *ngFor="let n of [] | range:this.plan.days"> -->
 
-<div *ngFor="let day of days">
-  <!-- <div *ngFor="let n of [] | range:this.plan.days"> -->
-
-    <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Day {{day.id}}
-            </mat-panel-title>
-            <mat-panel-description>
-              Edit Locations
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div *ngFor="let location of day.locations">
-              <div *ngIf="location.info">
-                  <mat-card class="dayCard">
-                    <img mat-card-image src="{{location.info.img}}">
-                    <!-- <div mat-card-avatar class="header-image"></div> -->
-                    <mat-card-title>{{location.info.name | uppercase }} {{location.order}}</mat-card-title>
-                    <mat-card-subtitle>{{location.info.city}} {{location.info.neighborhood}}</mat-card-subtitle>
-                    <mat-card-content>{{location.info.content}}</mat-card-content>
-            
-                    <mat-card-actions>
-                      <button mat-button (click)="deleteLocationInPlan(day.id, location.id)">DELETE</button>
-                    </mat-card-actions>
-                </mat-card>
+        <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Day {{day.id}}
+                </mat-panel-title>
+                <mat-panel-description>
+                  Edit Locations
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div *ngFor="let location of day.locations">
+                  <div *ngIf="location.info">
+                      <mat-card class="dayCard">
+                        <img mat-card-image src="{{location.info.img}}">
+                        <!-- <div mat-card-avatar class="header-image"></div> -->
+                        <mat-card-title>{{location.info.name | uppercase }} {{location.order}}</mat-card-title>
+                        <mat-card-subtitle>{{location.info.city}} {{location.info.neighborhood}}</mat-card-subtitle>
+                        <mat-card-content>{{location.info.content}}</mat-card-content>
+                
+                        <mat-card-actions>
+                          <button mat-button (click)="deleteLocationInPlan(day.id, location.id)">DELETE</button>
+                        </mat-card-actions>
+                    </mat-card>
+                  </div>
               </div>
-          </div>
-          <i mat-dialog-title class="material-icons" md-48 (click)="openDialog(this.plan_id, day.id)">add_circle_outline</i>
-        </mat-expansion-panel>
-      </mat-accordion>
+              <i mat-dialog-title class="material-icons" md-48 (click)="openDialog(this.plan_id, day.id)">add_circle_outline</i>
+            </mat-expansion-panel>
+          </mat-accordion>
+    </div>
 </div>
-
 
 
 <!-- <div *ngIf="plans">

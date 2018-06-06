@@ -14,23 +14,27 @@
 
   <div class="navbar-menu" [ngClass]="{'is-active': show}">
     <div class="navbar-end"  >
-      <a class="navbar-item" routerLink="/login">
-        Login
-      </a>
+
       <!-- <a class="navbar-item" routerLink="/ssr">
         SSR Universal
       </a> -->
       <a class="navbar-item" routerLink="/notes">
         Firestore
       </a>
-      <a class="navbar-item" routerLink="/uploads">
+      <!-- <a class="navbar-item" routerLink="/uploads">
         File Uploads
-      </a>
+      </a> -->
       <a class="navbar-item" routerLink="/plan">
-        Plan
+        My Plans
       </a>
       <a class="navbar-item" routerLink="/mypage">
-        
+        {{this.dName}}
+      </a>
+      <a class="navbar-item" (click)="logout()">
+        Logout
+      </a>
+      <a class="navbar-item" routerLink="/login">
+        Login
       </a>
     </div>
   </div>
