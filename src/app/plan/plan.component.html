@@ -13,7 +13,7 @@
     <mat-tab label="Plans">
       <div class="content">
         <div *ngFor="let plan of plans">
-            <mat-card class ="OnePlan" >
+            <mat-card class ="OnePlan" (hovered)="toggleHover($event)" [class.hovering]="isHovering" >
                 <!-- <img mat-card-image src="{{hero.storageImg}}"> -->
                 <!-- <div mat-card-avatar class="header-image"></div> -->
                 <mat-card-title>{{plan.plan_name | uppercase}}</mat-card-title>

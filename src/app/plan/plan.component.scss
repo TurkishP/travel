@@ -1,6 +1,11 @@
 .OnePlan{
     width: 300px;
     margin:10px;
+    
+    &.hovering {
+        border: 2px solid #f16624;
+        color: #dadada !important;
+    }
 }
 
 h1{

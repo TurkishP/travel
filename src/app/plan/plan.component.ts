@@ -32,6 +32,7 @@ export class PlanComponent implements OnInit {
   uidSUB : Subscription;
   planSub: Subscription;
   dName: string;
+  isHovering: boolean;
   // plans: Observable<any[]>;
 
   constructor(
@@ -57,6 +58,10 @@ export class PlanComponent implements OnInit {
     // this.uidSUB = this.auth.
 
   }
+  toggleHover(event: boolean) {
+    this.isHovering = event;
+  }
+
 
   openDialog() {
     const dialogRef = this.dialog.open(NewplanPopupComponent, {
@@ -90,7 +95,7 @@ export class PlanComponent implements OnInit {
       this.plans = plans
       console.log(this.plans)
 
-    }))
+  }))
 
 
     // this.plans = this.planService.getMyPlans();
