@@ -52,13 +52,13 @@ export class NewLocaPopupComponent implements OnInit {
   storageImg: string;
 
   storageRef: any;
+  // storage2 = firebase.storage();
 
   constructor(
     private auth: AuthService,
     private loca: LocationService,
     private afAuth: AngularFireAuth,
     private storage: AngularFireStorage,
-
   
   ) {
 
@@ -80,10 +80,10 @@ export class NewLocaPopupComponent implements OnInit {
   newLocation(name: string, city: string, neighborhood: string, content: string){
     console.log(this.UID,this.username,name, city, neighborhood, content)
     // console.log(this.downloadURL)
-    this.loca.addLocation(this.username, this.UID, this.path, name, city, neighborhood, content);
+    this.downloadURL.subscribe(result=>{
+      this.loca.addLocation(this.username, this.UID, result, name, city, neighborhood, content);
+    })
     
-    
-
   }
 
   
@@ -100,10 +100,13 @@ export class NewLocaPopupComponent implements OnInit {
       console.error('unsupported file type :( ');
       return;
     }
-
     // The storage path
     this.path = `photos/${new Date().getTime()}_${file.name}`;
     console.log(this.path)
+    // let pathReference = this.storage2.ref(this.path);
+    // pathReference.getDownloadURL().then(function(url){
+    //   console.log(url)
+    // });
     // Totally optional metadata
     const customMetadata = { app: 'for our web service project' };
 
@@ -122,9 +125,20 @@ export class NewLocaPopupComponent implements OnInit {
       finalize(() => this.downloadURL = this.storage.ref(this.path).getDownloadURL() )
       
     );
+
+    this.task.snapshotChanges().pipe(
+      tap(snap => {
+        if (snap.bytesTransferred === snap.totalBytes) {
+          // Update firestore on completion
+          // this.db.collection('photos').add({ path, size: snap.totalBytes });
+        }
+      }),
+      finalize(() => this.downloadURL = this.storage.ref(this.path).getDownloadURL() )
+      
+    ).subscribe()
     // The file's download URL      console.log(firebase.storage().ref(this.path).getDownloadURL);
     // console.log(firebase.storage().ref(this.path).getDownloadURL());
-    console.log(this.storage.ref(this.path).getDownloadURL());
+    
 
   }
 

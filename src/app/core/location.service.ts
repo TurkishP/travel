@@ -61,4 +61,8 @@ export class LocationService {
 
     this.locationsCollection.add(location);
   }
+
+  deleteLocation(id:string){
+    this.locationsCollection.doc(id).delete();
+  }
 }
