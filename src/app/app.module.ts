@@ -22,16 +22,15 @@ import { environment } from '../environments/environment';
 import { PlanComponent } from './plan/plan.component';
 
 import { MaterialModule } from './material.module';
-import { MytravelComponent } from './mytravel/mytravel.component';
 // import { NewLocaPopupComponent } from './ui/home-page/new-loca-popup/new-loca-popup.component';
+import { LocInfoPopupComponent  } from './ui/home-page/loc-info-popup/loc-info-popup.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PlanComponent,
-    MytravelComponent,
-    
+    LocInfoPopupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -1,4 +1,5 @@
 <!-- <h2>My Plans</h2> -->
+<!-- <div class="container"> -->
 <h1>{{this.dName}}</h1>
 
 
@@ -33,9 +34,25 @@
     </mat-tab>
 
     <mat-tab label="Locations">
+        <div class="displayContents">
+            <div *ngFor="let location of locations">
+              <mat-card class="OneLocation">
+                            <img mat-card-image src="{{location.img}}">
+                            <div mat-card-avatar class="header-image"></div>
+                            <mat-card-title>{{location.name}}</mat-card-title>
+                            <mat-card-subtitle>{{location.city}} {{location.neighborhood}}</mat-card-subtitle>
+                            <mat-card-content>{{location.content}}</mat-card-content>
+                    
+                            <mat-card-actions>
+                                <!-- <button routerLink="/plan-detail/{{plan.id}}" mat-button>EDIT</button> -->
+                                <button mat-button (click)="deleteLocation(location.id)">DELETE</button>
+                            </mat-card-actions>
+                    </mat-card>
+            </div>
+          </div>
     </mat-tab>
 
-    <mat-tab label="단골">
+    <mat-tab label="Like">
         <!-- my favorite places to go to -->
     </mat-tab>
 
@@ -55,3 +72,6 @@
       
 
 </mat-tab-group>
+
+<!-- </div> -->
+<!-- container ends -->

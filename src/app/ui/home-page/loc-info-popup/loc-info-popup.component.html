@@ -1,0 +1,28 @@
+<div class="text">
+<h5 > <strong>{{this.data.Name}} </strong> {{this.data.City}} {{this.data.Neighborhood}}</h5><br>
+
+<mat-divider></mat-divider> 
+<br>
+<img src="{{this.data.Img}}">
+<br><br>
+<p>
+    {{this.data.Content}}
+</p>
+<br><br>
+<mat-divider></mat-divider> 
+<br><br>
+
+
+<div *ngFor="let comment of comments | async">
+<div *ngIf="comments.name">
+    <strong>{{comment.id}}</strong>{{comment.text}}
+</div>
+</div>
+<mat-icon aria-label="Example icon-button with a heart icon">person</mat-icon>
+<mat-form-field class="example-full-width">
+    <textarea matInput placeholder="댓글달기.."></textarea>
+  </mat-form-field>
+  <button  mat-icon-button> <img src="assets/images/paper-plane.png" width="40px" alt="travel Angular4 Demo App"/> </button>
+ 
+</div>
+

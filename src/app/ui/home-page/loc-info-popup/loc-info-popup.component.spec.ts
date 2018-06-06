@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MytravelComponent } from './mytravel.component';
+import { LocInfoPopupComponent } from './loc-info-popup.component';
 
-describe('MytravelComponent', () => {
-  let component: MytravelComponent;
-  let fixture: ComponentFixture<MytravelComponent>;
+describe('LocInfoPopupComponent', () => {
+  let component: LocInfoPopupComponent;
+  let fixture: ComponentFixture<LocInfoPopupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MytravelComponent ]
+      declarations: [ LocInfoPopupComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MytravelComponent);
+    fixture = TestBed.createComponent(LocInfoPopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

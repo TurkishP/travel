@@ -10,7 +10,6 @@ import { UploadPageComponent } from './uploads/upload-page/upload-page.component
 import { SsrPageComponent } from './ui/ssr-page/ssr-page.component';
 import { PlanComponent } from './plan/plan.component';
 import { PlanDetailComponent } from './plan/plan-detail/plan-detail.component';
-import { MytravelComponent} from './mytravel/mytravel.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -20,7 +19,6 @@ const routes: Routes = [
   // { path: 'ssr', component: SsrPageComponent },
   { path: 'plan', component: PlanComponent },
   { path: 'plan-detail/:plan_id', component: PlanDetailComponent },
-  { path: 'mytravel', component: MytravelComponent},
 
 
 ];

@@ -35,6 +35,12 @@ mat-tab-group{
 #share{
     margin-left: 60px;
 }
+
+// .container{
+//     width: 80%;
+//     margin-left: 10%;
+//     margin-right: 10%;
+// }
 // mat-tab{
 //     width:33%;
 // }
@@ -42,3 +48,20 @@ mat-tab-group{
 //     position: static;
 //     left:10px;
 // }
+
+.OneLocation{
+    width: 350px;
+    // height: 350px;
+    margin: 10px 10px 10px 0;
+}
+
+img{
+    height: 50%;
+    width: 50%;
+}
+
+.displayContents{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}

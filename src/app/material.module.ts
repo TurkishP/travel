@@ -5,7 +5,7 @@ import { SearchPopupComponent} from './plan/plan-detail/search-popup/search-popu
 import { PlanDetailComponent } from './plan/plan-detail/plan-detail.component';
 import { NewLocaPopupComponent } from './ui/home-page/new-loca-popup/new-loca-popup.component';
 import { NewplanPopupComponent } from './plan/plan-detail/newplan-popup/newplan-popup.component';
-
+import { LocInfoPopupComponent } from './ui/home-page/loc-info-popup/loc-info-popup.component';
 
 import {    MatAutocompleteModule,
   MatButtonModule,
@@ -108,7 +108,7 @@ import {    MatAutocompleteModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,],
-    entryComponents: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent],
+    entryComponents: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent,LocInfoPopupComponent], //팝업할때 
     declarations: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent],
     bootstrap: [PlanDetailComponent],
     providers: []

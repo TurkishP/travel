@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
 
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 interface location {
   city: string;
@@ -23,20 +24,52 @@ interface location {
 })
 export class LocationService {
 
+  queyrObservable: Observable<any>;
   private location: location;
   private locationsCollection: AngularFirestoreCollection<location>;
   private locations: Observable<location[]>;
   dateSent: firebase.firestore.FieldValue;
+  private uidSUB: Subscription;
+  UID: string;
+  uid$ = new Subject<String>();
   constructor( 
     private afs: AngularFirestore,
+    private auth: AuthService
   ) {
     this.locationsCollection = this.afs.collection('locations');
-
+    this.uidSUB = this.auth.UID.subscribe({
+      next(uid){ this.UID = uid
+        console.log(this.UID)
+      }
+    }
+  )
     
-   }
+  this.queyrObservable = this.uid$.pipe(
+    switchMap(uid => 
+      this.afs.collection('locations', ref => ref.where
+      ('uid', '==', uid)).snapshotChanges().pipe(
+        map((actions) => {
+          return actions.map((a) => {
+            const data = a.payload.doc.data();
+            return { id: a.payload.doc.id, ...data };
+          });
+        })
+      )));
+}
 
   getLocations(): Observable<any[]>{
     return this.locations = this.locationsCollection
+    .snapshotChanges().pipe(
+     map(actions => actions.map(a => {
+      const data = a.payload.doc.data() as location;
+      const id = a.payload.doc.id;
+      return {id, ...data};
+    }))
+   );
+  }
+  userLocations(userID): Observable<any[]>{
+    return this.locations = this.afs.collection('locations', ref => ref.where
+    ('uid', '==', userID))
     .snapshotChanges().pipe(
      map(actions => actions.map(a => {
       const data = a.payload.doc.data() as location;

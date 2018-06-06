@@ -3,24 +3,38 @@
 }
 
 .card{
+
     width: 350px;
-    // height: 350px;
+    //height: 450px;
     margin: 10px 10px 10px 0;
+
 }
 
 img{
     height: 50%;
-    width: 50%;
+    width: 70%;
 }
 
 .displayContents{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+
 }
 
 #like{
     position: relative;
     margin-left: 300px;
     top:0;
+}
+
+.container{
+    width: 80%;
+    margin-left:12%;
+    margin-right:10%;  
+}
+
+.display{
+    margin-left:12%;
+    margin-right:10%; 
 }
