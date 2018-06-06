@@ -11,6 +11,7 @@ import {
 } from 'angularfire2/storage';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { tap, finalize } from 'rxjs/operators';
+import firebase from '@firebase/app';
 
 interface location {
   city: string;
@@ -49,6 +50,9 @@ export class NewLocaPopupComponent implements OnInit {
   // State for dropzone CSS toggling
   isHovering: boolean;
   storageImg: string;
+
+  storageRef: any;
+
   constructor(
     private auth: AuthService,
     private loca: LocationService,
@@ -75,6 +79,7 @@ export class NewLocaPopupComponent implements OnInit {
 
   newLocation(name: string, city: string, neighborhood: string, content: string){
     console.log(this.UID,this.username,name, city, neighborhood, content)
+    // console.log(this.downloadURL)
     this.loca.addLocation(this.username, this.UID, this.path, name, city, neighborhood, content);
     
     
@@ -98,15 +103,12 @@ export class NewLocaPopupComponent implements OnInit {
 
     // The storage path
     this.path = `photos/${new Date().getTime()}_${file.name}`;
-
+    console.log(this.path)
     // Totally optional metadata
     const customMetadata = { app: 'for our web service project' };
 
     // The main task
     this.task = this.storage.upload(this.path, file, { customMetadata });
-    this.task.snapshotChanges().subscribe(results=>{
-      console.log(this.path)
-    })
     // Progress monitoring
     this.percentage = this.task.percentageChanges();
     this.snapshot = this.task.snapshotChanges().pipe(
@@ -114,15 +116,16 @@ export class NewLocaPopupComponent implements OnInit {
         if (snap.bytesTransferred === snap.totalBytes) {
           // Update firestore on completion
           // this.db.collection('photos').add({ path, size: snap.totalBytes });
-          console.log(this.path)
+            console.log("hello~??")
         }
       }),
       finalize(() => this.downloadURL = this.storage.ref(this.path).getDownloadURL() )
       
     );
+    // The file's download URL      console.log(firebase.storage().ref(this.path).getDownloadURL);
+    // console.log(firebase.storage().ref(this.path).getDownloadURL());
+    console.log(this.storage.ref(this.path).getDownloadURL());
 
-
-    // The file's download URL
   }
 
   // Determines if the upload task is active
