@@ -1,6 +1,6 @@
 .OnePlan{
-    width: 400px;
-    margin:15px;
+    width: 300px;
+    margin:10px;
 }
 
 h1{
@@ -13,10 +13,18 @@ h1{
 }
 
 mat-tab-group{
-    width: 80%;
+    width: 83%;
     margin-left: 10%;
 }
 
+.content{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#share{
+    margin-left: 60px;
+}
 // mat-tab{
 //     width:33%;
 // }

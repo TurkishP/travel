@@ -9,6 +9,7 @@
 
 <mat-tab-group class="demo-tab-group">
     <mat-tab label="My Plans">
+      <div class="content">
         <div *ngFor="let plan of plans">
             <mat-card class ="OnePlan" >
                 <!-- <img mat-card-image src="{{hero.storageImg}}"> -->
@@ -21,14 +22,30 @@
                 <mat-card-actions>
                   <button routerLink="/plan-detail/{{plan.id}}" mat-button>EDIT</button>
                   <button mat-button (click)="deletePlan(plan.id)">DELETE</button>
+                  <i id="share" mat-dialog-title class="material-icons" md-18>share</i>
                   <!-- <button mat-button *ngIf= "isAuth" (click)="liked()">LIKE</button> -->
                 </mat-card-actions>
             </mat-card>
         </div>
+      </div>
     </mat-tab>
-    <mat-tab label="My Friends">
-    </mat-tab>
+
     <mat-tab label="Places to go">
     </mat-tab>
+
+    <mat-tab label="My Friends">
+    </mat-tab>
+
+    <mat-tab label="단골">
+      <!-- my favorite places to go to -->
+    </mat-tab>
+
+    <mat-tab label="Subscribe">
+      <!-- Subscrib to categories of locations -->
+    </mat-tab>
+
+    <mat-tab label="Messages">
+        <!-- Subscrib to categories of locations -->
+      </mat-tab>
 
 </mat-tab-group>
