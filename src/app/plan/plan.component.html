@@ -2,9 +2,11 @@
 <h1>{{this.dName}}</h1>
 
 
-<div id="newPlan">
+<div id="new">
       <i mat-dialog-title class="material-icons" md-48 (click)="openDialog()">add_circle_outline</i> New Plan
+      <i id="newloc" mat-dialog-title class="material-icons" md-48 (click)="openDialog2()">add_circle_outline</i> Add Location
 </div>
+
 
 
 <mat-tab-group class="demo-tab-group">
@@ -33,19 +35,23 @@
     <mat-tab label="Locations">
     </mat-tab>
 
-    <mat-tab label="Friends">
-    </mat-tab>
-
     <mat-tab label="단골">
-      <!-- my favorite places to go to -->
+        <!-- my favorite places to go to -->
     </mat-tab>
 
     <mat-tab label="Subscribe">
       <!-- Subscrib to categories of locations -->
     </mat-tab>
 
+    <mat-tab label="Friends">
+    </mat-tab>  
+  
     <mat-tab label="Messages">
         <!-- Subscrib to categories of locations -->
-      </mat-tab>
+    </mat-tab>
+
+    <mat-tab label="User Details">
+    </mat-tab>
+      
 
 </mat-tab-group>

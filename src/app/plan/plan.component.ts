@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { NewplanPopupComponent } from './plan-detail/newplan-popup/newplan-popup.component';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { NewLocaPopupComponent } from '../ui/home-page/new-loca-popup/new-loca-popup.component';
 
 interface plan {
   days: number;
@@ -57,11 +58,24 @@ export class PlanComponent implements OnInit {
 
   }
 
-  openDialog(planId, day) {
+  openDialog() {
     const dialogRef = this.dialog.open(NewplanPopupComponent, {
       data:{},
       height: '300px',
       width: '280px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+
+  }
+
+  openDialog2() {
+    const dialogRef = this.dialog.open(NewLocaPopupComponent, {
+      data:{},
+      height: '570px',
+      width: '600px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
