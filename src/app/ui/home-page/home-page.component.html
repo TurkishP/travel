@@ -10,7 +10,7 @@
   <div *ngFor="let location of locations | async">
     <div *ngIf="location.name.includes(search.value)">
 
-        <mat-card class="card">
+        <mat-card class="card" (click)="detailPopup()">
                 <img mat-card-image src="{{location.img}}">
                 <div mat-card-avatar class="header-image"></div>
                 <mat-card-title>{{location.name}}</mat-card-title>

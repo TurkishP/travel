@@ -7,6 +7,7 @@ import { AuthService } from '../../core/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
+import { DetailPopupComponent } from './detail-popup/detail-popup.component';
 
 
 @Component({
@@ -39,17 +40,12 @@ export class HomePageComponent implements OnInit {
     this.locations = this.loca.getLocations();
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(NewLocaPopupComponent, {
-      data:{},
-      height: '570px',
-      width: '600px'
+  detailPopup(locId) {
+    const dialogRef = this.dialog.open(DetailPopupComponent, {
+      data:{locID:locId},
+      height: '90%',
+      width: '90%'
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-
   }
 
   deleteLocation(id:string){

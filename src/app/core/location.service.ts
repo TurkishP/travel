@@ -65,4 +65,8 @@ export class LocationService {
   deleteLocation(id:string){
     this.locationsCollection.doc(id).delete();
   }
+
+  getlocation(id:string): Observable<location>{
+    return this.afs.collection('locations').doc<location>(id).valueChanges();
+  }
 }
