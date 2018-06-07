@@ -7,7 +7,6 @@ import { AuthService } from '../../../core/auth.service';
 
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 
-import { planfolder } from '../../planfolder';
 import { ActivatedRoute } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import { map } from 'rxjs/operators';

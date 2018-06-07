@@ -16,12 +16,15 @@
 
 
 
-<div class="displayContents">
-  <div *ngFor="let location of locations | async">
+
+<div class="main">
+
+<div class="masonry">
+  <div *ngFor="let location of locations | async" class="item">
     <div *ngIf="location.name.includes(search.value)">
 
-        <mat-card class="card">
-          <div (click)="detailPopup(location.id)">
+        <mat-card class="card ">
+          <span (click)="detailPopup(location.id)">
                 <img mat-card-image src="{{location.img}}">
                 <div mat-card-avatar class="header-image"></div>
                 <div  class="cardContent" >
@@ -29,7 +32,7 @@
                     <mat-card-subtitle>{{location.city}} {{location.neighborhood}}</mat-card-subtitle>
                 </div>
                 <!-- <mat-card-content>{{location.content}}</mat-card-content> -->
-         </div>  
+            </span>  
                 <mat-card-actions>
                         
                         <!-- <button mat-button (click)="add(location.id)">ADD</button> -->
@@ -39,6 +42,7 @@
         </mat-card>
     </div>
   </div>
+</div>
 </div>
 
 </div> 
