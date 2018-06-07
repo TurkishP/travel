@@ -10,11 +10,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class MainNavComponent {
 
   show = false;
-  private dName: string;
+  public dName: string;
 
   constructor(   
     private afAuth: AngularFireAuth,
-    private auth: AuthService
+    public auth: AuthService
   ) {
     this.afAuth.authState.subscribe(user=>{
       if(user) {this.dName = user.displayName}
