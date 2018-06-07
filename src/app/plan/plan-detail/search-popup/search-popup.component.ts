@@ -52,10 +52,10 @@ export class SearchPopupComponent implements OnInit {
     // console.log(days.day);
     this.db.collection('plan_folder').doc(this.data.planID).collection('days').doc(this.data.Day).collection('locations').doc(locationId).set({
       // order: this.data.Order+1
-    })then(()=>{
+    }).then(()=>{
       this.snackBar.open("Added!", "Close", {
         duration: 1300,
-      });
+      })
    });
   }
   

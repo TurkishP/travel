@@ -121,7 +121,8 @@ getMyPlans(): Observable<any[]> {
 
     for(let i=1; i<=days; i++){
       this.plansCollection.doc(UID.concat(name)).collection('days').doc(i.toString()).set({
-        loc_count:0
+        loc_count:0,
+        day: i
       });
     }
   }
@@ -136,7 +137,8 @@ getMyPlans(): Observable<any[]> {
 
   getPlanDays(plan_id: string): Observable<any[]>{
 
-    return this.afs.collection('plan_folder').doc(plan_id).collection('days').snapshotChanges().pipe(
+    return this.afs.collection('plan_folder').doc(plan_id).collection('days', ref => ref.orderBy
+    ('day','asc')).snapshotChanges().pipe(
       map((actions)=>{
         return actions.map((a)=>{
           const data = a.payload.doc.data();

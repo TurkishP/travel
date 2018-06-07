@@ -8,8 +8,15 @@
     <mat-card-content>{{location.content}}</mat-card-content>
 
     <mat-card-actions>
+        <i id="like" mat-dialog-title class="material-icons" md-48 (click)="like(location.id)">star_border</i>
+
       <!-- <button mat-button (click)="deleteLocationInPlan(location.id)">DELETE</button> -->
     </mat-card-actions>
 </mat-card>
 
 </div>
+
+<!-- reviews -->
+
+<h1>Who liked this post</h1>
+<h1>Reviews</h1>
