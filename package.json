@@ -35,6 +35,7 @@
     "firebase": "^5.0.4",
     "hammerjs": "^2.0.8",
     "material-design-icons": "^3.0.1",
+    "ngx-naver-map": "0.0.738",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

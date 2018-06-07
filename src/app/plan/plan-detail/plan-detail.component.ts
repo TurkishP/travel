@@ -13,6 +13,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 
 import { SearchPopupComponent } from './search-popup/search-popup.component';
 import { Pipe, PipeTransform } from '@angular/core';  
+import { MapPopupComponent } from './map-popup/map-popup.component';
 
 @Pipe({  
     name: 'range',  
@@ -32,7 +33,7 @@ export class PlanDetailComponent implements OnInit, PipeTransform{
     }
     return items;
   }  
-  
+  mapView = 0;
   plans: Observable<any[]>;
   plan_id : string;
   days:any;
@@ -112,7 +113,18 @@ export class PlanDetailComponent implements OnInit, PipeTransform{
     console.log(day, locationId)
     this.afs.collection('plan_folder').doc(this.plan_id).collection('days').doc(day).collection('locations').doc(locationId).delete();
   }
+  map(day){
+    this.mapView = 1;
+    const dialogRef = this.dialog.open(MapPopupComponent, {
+      data:{},
+      height: '500px',
+      width: '500px'
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
 
 
