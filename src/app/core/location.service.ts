@@ -7,6 +7,7 @@ import { Observable, Subject } from 'rxjs';
 import { Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 interface location {
   city: string;
@@ -28,22 +29,31 @@ export class LocationService {
   private location: location;
   private locationsCollection: AngularFirestoreCollection<location>;
   private locations: Observable<location[]>;
+  private comments: Observable<any[]>;
+
   dateSent: firebase.firestore.FieldValue;
   private uidSUB: Subscription;
   UID: string;
   uid$ = new Subject<String>();
+  username: string;
   constructor( 
     private afs: AngularFirestore,
-    private auth: AuthService
+    private auth: AuthService,
+    private afAuth: AngularFireAuth,
   ) {
     this.locationsCollection = this.afs.collection('locations');
+    
     this.uidSUB = this.auth.UID.subscribe({
       next(uid){ this.UID = uid
         console.log(this.UID)
       }
     }
   )
-    
+   
+  this.afAuth.authState.subscribe(user=>{
+    if(user) {this.username = user.displayName}
+  })
+
   this.queyrObservable = this.uid$.pipe(
     switchMap(uid => 
       this.afs.collection('locations', ref => ref.where
@@ -67,6 +77,7 @@ export class LocationService {
     }))
    );
   }
+
   userLocations(userID): Observable<any[]>{
     return this.locations = this.afs.collection('locations', ref => ref.where
     ('uid', '==', userID))
@@ -93,6 +104,31 @@ export class LocationService {
     };
 
     this.locationsCollection.add(location);
+  }
+
+  
+  newComment(content: string, location_id:string, uid:string, photoURL: string){
+    console.log(content, location_id, uid, this.username)
+    this.locationsCollection.doc(location_id).collection('comments').add({
+      content: content,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      uid: uid,
+      username: this.username,
+      photoURL: photoURL
+    })
+    // this.locationsCollection.add(location);
+  }
+
+  getComments(location_id): Observable<any[]>{
+    return this.comments = this.locationsCollection.doc(location_id).collection('comments')
+    .snapshotChanges().pipe(
+     map(actions => actions.map(a => {
+      const data = a.payload.doc.data() as location;
+      const id = a.payload.doc.id;
+      return {id, ...data};
+    }))
+   );
+
   }
 
   deleteLocation(id:string){

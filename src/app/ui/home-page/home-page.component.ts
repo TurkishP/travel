@@ -35,7 +35,7 @@ export class HomePageComponent implements OnInit {
       if (user) this.UID = user.uid
     })
     /// this.gethashtag();
-    this.add();
+    // this.add();
   }
   
   openinfo(name,city,neighborhood,img,content){
@@ -50,24 +50,24 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  add() {
-    console.log("h8i");
+  // add() {
+  //   console.log("h8i");
 
-    var content = document.getElementById('contents').innerHTML;
-    var splitedArray = content.split(' ');
-    var linkedContent = '';
-    console.log("테그테그");
-    for (var word in splitedArray) {
-      word = splitedArray[word];
-      if (word.indexOf('#') == 0) {
-        word = '<a href=\'링크\'>' + word + '</a>';
-        console.log("테그테그");
-      }
-      linkedContent += word + ' ';
-    }
-    document.getElementById('contents').innerHTML = linkedContent;
+  //   var content = document.getElementById('contents').innerHTML;
+  //   var splitedArray = content.split(' ');
+  //   var linkedContent = '';
+  //   console.log("테그테그");
+  //   for (var word in splitedArray) {
+  //     word = splitedArray[word];
+  //     if (word.indexOf('#') == 0) {
+  //       word = '<a href=\'링크\'>' + word + '</a>';
+  //       console.log("테그테그");
+  //     }
+  //     linkedContent += word + ' ';
+  //   }
+  //   document.getElementById('contents').innerHTML = linkedContent;
 
-  }
+  // }
 
   getlocations() {
     this.locations = this.loca.getLocations();

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlanService } from '../core/plan.service';
 import { Observable } from 'rxjs';
 import { AuthService } from '../core/auth.service';
-import { planfolder } from './planfolder';
+
 import { getMultipleValuesInSingleSelectionError } from '@angular/cdk/collections';
 import { Subscription } from 'rxjs';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
