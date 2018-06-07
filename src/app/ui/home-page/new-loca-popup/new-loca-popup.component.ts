@@ -59,7 +59,7 @@ export class NewLocaPopupComponent implements OnInit {
     private loca: LocationService,
     private afAuth: AngularFireAuth,
     private storage: AngularFireStorage,
-  
+
   ) {
 
    }
@@ -77,11 +77,11 @@ export class NewLocaPopupComponent implements OnInit {
     })
   }
 
-  newLocation(name: string, city: string, neighborhood: string, content: string){
+  newLocation(name: string, city: string, neighborhood: string, content: string,tag:string){
     console.log(this.UID,this.username,name, city, neighborhood, content)
     // console.log(this.downloadURL)
     this.downloadURL.subscribe(result=>{
-      this.loca.addLocation(this.username, this.UID, result, name, city, neighborhood, content);
+      this.loca.addLocation(this.username, this.UID, result, name, city, neighborhood, content,tag);
     })
     
   }

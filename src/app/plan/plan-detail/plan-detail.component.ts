@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { LocationService } from '../../core/location.service';
 import { AuthService } from '../../core/auth.service';
 
-import { planfolder } from '../planfolder';
+//import { planfolder } from '../planfolder';
 import { ActivatedRoute } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
@@ -97,7 +97,7 @@ export class PlanDetailComponent implements OnInit, PipeTransform{
 
   openDialog(planId, day) {
     const dialogRef = this.dialog.open(SearchPopupComponent, {
-      data:{planID:planId, Day: day},
+      data:{planID:planId, Day: day}, //searchpoptcomp 에 저 데이터를 보여주는 거 
       height: '90%',
       width: '90%'
     });

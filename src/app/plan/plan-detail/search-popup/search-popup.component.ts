@@ -7,9 +7,9 @@ import { AuthService } from '../../../core/auth.service';
 
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 
-import { planfolder } from '../../planfolder';
+//import { planfolder } from '../../planfolder';
 import { ActivatedRoute } from '@angular/router';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -24,8 +24,6 @@ export class SearchPopupComponent implements OnInit {
     public planService : PlanService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public db: AngularFirestore,
-    public snackBar: MatSnackBar,
-
   
   ){
   }
@@ -40,24 +38,25 @@ export class SearchPopupComponent implements OnInit {
 
   add(locationId){
     console.log(locationId,this.data.planID, this.data.Day)
-    let days = this.db.collection('plan_folder').doc(this.data.planID).collection('days').snapshotChanges().pipe(
-      map((actions)=>{
-        return actions.map((a)=>{
-          const data = a.payload.doc.data();
-          return {...data};
-        })
-      })
-    );
+    //여기서 가져다씀 
+  //  // let days = this.db.collection('plan_folder').doc(this.data.planID).collection('days').snapshotChanges().pipe(
+  //     map((actions)=>{
+  //       return actions.map((a)=>{
+  //         const data = a.payload.doc.data();
+  //         return {...data};
+  //       })
+  //     })
+  //   );
 
     // console.log(days.day);
     this.db.collection('plan_folder').doc(this.data.planID).collection('days').doc(this.data.Day).collection('locations').doc(locationId).set({
       // order: this.data.Order+1
-    }).then(()=>{
-      this.snackBar.open("Added!", "Close", {
-        duration: 1300,
-      })
-   });
+    })
+  //   .then(()=>{
+  //     this.snackBar.open("ADDED", "Close", {
+  //       duration: 2000,
+  //     });
+  //  });
   }
   
-
 }

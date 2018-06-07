@@ -3,6 +3,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/ma
 import { NewLocaPopupComponent } from './new-loca-popup/new-loca-popup.component';
 import {  LocInfoPopupComponent } from './loc-info-popup/loc-info-popup.component';
 import { LocationService } from '../../core/location.service';
+
 import { Observable } from 'rxjs';
 import { AuthService } from '../../core/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -17,10 +18,12 @@ import * as firebase from 'firebase/app';
 })
 export class HomePageComponent implements OnInit {
   locations: Observable<any[]>;
+  tag:Observable<any[]>
   UID: string;
   constructor(
     public dialog: MatDialog,
     private loca: LocationService,
+   
     private auth: AuthService,
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -30,7 +33,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     this.getlocations();
-
+    //this.getTags(this.locations.id);
     this.afAuth.authState.subscribe(user => {
       if (user) this.UID = user.uid
     })
@@ -49,28 +52,18 @@ export class HomePageComponent implements OnInit {
       console.log(`info result: ${result}`);
     });
   }
-
-  // add() {
-  //   console.log("h8i");
-
-  //   var content = document.getElementById('contents').innerHTML;
-  //   var splitedArray = content.split(' ');
-  //   var linkedContent = '';
-  //   console.log("테그테그");
-  //   for (var word in splitedArray) {
-  //     word = splitedArray[word];
-  //     if (word.indexOf('#') == 0) {
-  //       word = '<a href=\'링크\'>' + word + '</a>';
-  //       console.log("테그테그");
-  //     }
-  //     linkedContent += word + ' ';
-  //   }
-  //   document.getElementById('contents').innerHTML = linkedContent;
-
-  // }
+  
+  test(){
+    console.log("hi");
+    console.log(`hi`);
+  }
 
   getlocations() {
     this.locations = this.loca.getLocations();
+  }
+
+  getTags(id:string){
+    this.tag=this.loca.getTags(id);
   }
 
   openDialog() {
