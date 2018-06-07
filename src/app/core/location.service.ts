@@ -120,7 +120,8 @@ export class LocationService {
   }
 
   getComments(location_id): Observable<any[]>{
-    return this.comments = this.locationsCollection.doc(location_id).collection('comments')
+    return this.comments = this.locationsCollection.doc(location_id).collection('comments', ref => ref.orderBy
+    ('timestamp','asc'))
     .snapshotChanges().pipe(
      map(actions => actions.map(a => {
       const data = a.payload.doc.data() as location;

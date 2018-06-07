@@ -26,6 +26,8 @@ export class LocInfoPopupComponent implements OnInit {
 ) {
   this.afAuth.authState.subscribe(user=>{
     if(user) {this.UID = user.uid}
+
+    
   })
 
 
@@ -55,5 +57,17 @@ export class LocInfoPopupComponent implements OnInit {
   getComments(){
       this.comments=this.loca.getComments(this.data.locID);
   }
+
+  deleteComment(comment_id:string, writer_uid:string){
+    //only delete if the user who wrote it is trying to.
+    if(confirm("Are you sure to delete?")) {
+      if(this.UID == writer_uid){
+        this.afs.collection('locations').doc(this.data.locID).collection('comments').doc(comment_id).delete();
+      }
+    }
+
+  }
+
+  
   //comments 가져오는 함수 구현해야함
 }

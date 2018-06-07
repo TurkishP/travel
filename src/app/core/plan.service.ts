@@ -72,31 +72,6 @@ export class PlanService {
 
  }
 
-  
-// getMyPlans2(){
-//   this.queyrObservable = this.uid$.pipe(
-//     switchMap(uid => 
-//       this.afs.collection('plan_folder', ref => ref.where
-//       ('uid', '==', uid)).snapshotChanges().pipe(
-//         map((actions) => {
-//           return actions.map((a) => {
-//             const data = a.payload.doc.data();
-//             console.log(a.payload.doc.data())
-//             return { id: a.payload.doc.id, ...data };
-//           });
-//         })
-//       )));
-
-//   // return this.afs.collection('plan_foler', ref => ref.where('uid', '==', this.UID )).snapshotChanges().pipe(
-//   //   map((actions) => {
-//   //     return actions.map((a) => {
-//   //       const data = a.payload.doc.data();
-//   //       console.log(a.payload.doc.data())
-//   //       return { id: a.payload.doc.id, ...data };
-//   //     });
-//   //   })
-//   // );
-// }
 
 getMyPlans(): Observable<any[]> {
     return this.plansCollection.snapshotChanges().pipe(

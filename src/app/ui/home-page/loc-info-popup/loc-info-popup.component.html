@@ -18,7 +18,8 @@
     <!-- <p>{{comment.timestamp}}</p> -->
     <button  mat-icon-button> <img class="commentImg" src="{{comment.photoURL}}" width="24px" alt="travel Angular4 Demo App"/> </button>
     <strong> {{comment.username}} says : </strong>{{comment.content}}
-<!-- </div> -->
+    <button  mat-icon-button (click)="deleteComment(comment.id, comment.uid)">  remove </button>
+    <!-- </div> -->
 </div>
 
 <mat-icon aria-label="Example icon-button with a heart icon">person</mat-icon>
