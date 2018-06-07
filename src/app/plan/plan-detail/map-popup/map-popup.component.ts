@@ -24,7 +24,7 @@ export class MapPopupComponent implements OnInit {
   infoWindows:Array<any> = [];
   mapOptions = {
     center: new naver.maps.LatLng(36.0190335, 129.3433895),
-    zoom: 4
+    zoom: 5
   };
   private uidSUB: Subscription;
 
