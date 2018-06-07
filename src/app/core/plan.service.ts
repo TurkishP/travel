@@ -142,6 +142,18 @@ getMyPlans(): Observable<any[]> {
      return this.afs.collection('locations').doc(loc_id)
   }
 
+  getlikeLocations(user_id:string): Observable<any[]>{
+    return this.afs.collection('users').doc(user_id).collection('like').snapshotChanges()
+      .pipe(
+      map((actions)=>{
+        return actions.map((a)=>{
+          const data = a.payload.doc.data();
+          return {id: a.payload.doc.id, ...data};
+        })
+      })
+    );
+  }
+
 }
 
 

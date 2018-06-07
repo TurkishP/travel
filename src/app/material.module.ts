@@ -6,6 +6,8 @@ import { PlanDetailComponent } from './plan/plan-detail/plan-detail.component';
 import { NewLocaPopupComponent } from './ui/home-page/new-loca-popup/new-loca-popup.component';
 import { NewplanPopupComponent } from './plan/plan-detail/newplan-popup/newplan-popup.component';
 import { LocInfoPopupComponent } from './ui/home-page/loc-info-popup/loc-info-popup.component';
+import { MapPopupComponent } from './plan/plan-detail/map-popup/map-popup.component';
+
 
 import {    MatAutocompleteModule,
   MatButtonModule,
@@ -108,10 +110,9 @@ import {    MatAutocompleteModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,],
-    entryComponents: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent,LocInfoPopupComponent], //팝업할때 
-    declarations: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent,LocInfoPopupComponent],
-
-    bootstrap: [PlanDetailComponent],
+    entryComponents: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent,LocInfoPopupComponent,MapPopupComponent], //팝업할때 
+    declarations: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent,LocInfoPopupComponent,MapPopupComponent],
+     bootstrap: [PlanDetailComponent],
     providers: []
 })
 export class MaterialModule { }

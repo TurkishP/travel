@@ -144,12 +144,9 @@ export class LocationService {
   }
 
   getlikes(user_id:string){
-    this.afs.collection('users').doc(user_id).collection('like').snapshotChanges().subscribe(data=>{
-      this.likedLocIDs = data;
-      console.log(this.likedLocIDs)
-      for(let x=0; x<this.likedLocIDs.length; x++){
-        // this.planService.getLocationInfo(data[x].)
-      }
+    this.planService.getlikeLocations(user_id)
+    .subscribe(data=>{
+      
     })
 
   }

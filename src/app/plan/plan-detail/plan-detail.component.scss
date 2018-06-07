@@ -20,3 +20,9 @@ img{
 .plancard{
     margin-bottom: 15px;
 }
+
+.map{
+    z-index: 999;
+    position: absolute;
+    background: black;
+}
