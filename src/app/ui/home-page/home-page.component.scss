@@ -27,6 +27,12 @@ img{
     top:3px;
 }
 
+#addForPlan{
+    position: absolute;
+    margin-left: 257px;
+    top:33px;
+}
+
 .contents{
     width: 80%;
     margin-left:17%;
@@ -41,6 +47,7 @@ mat-card-image{
     margin-bottom: -20px;
 }
 .cardContent{
+    // margin-top: 200px;
     position: absolute;
     bottom: 0px;
     left: 7px;

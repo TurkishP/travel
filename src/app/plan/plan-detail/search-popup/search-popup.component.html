@@ -8,16 +8,19 @@
           <div *ngIf="location.name.includes(search.value)">
 
               <mat-card class="searchCard">
+
                       <img mat-card-image src="{{location.img}}">
                       <div mat-card-avatar class="header-image"></div>
-                      <mat-card-title>{{location.name}}</mat-card-title>
-                      <mat-card-subtitle>{{location.city}} {{location.neighborhood}}</mat-card-subtitle>
-                      <mat-card-content>{{location.content}}</mat-card-content>
-              
-                      <mat-card-actions>
-                              <!-- <button routerLink="/plan-detail/{{plan.plan_id}}" mat-button>EDIT</button> -->
-                              <button mat-button (click)="add(location.id)">ADD</button>
-                      </mat-card-actions>
+                    <div class="cardContent">
+                        <mat-card-title>{{location.name}}</mat-card-title>
+                        <mat-card-subtitle>{{location.city}} {{location.neighborhood}}</mat-card-subtitle>
+                        <mat-card-content>{{location.content}}</mat-card-content>
+                
+                        <mat-card-actions>
+                                <!-- <button routerLink="/plan-detail/{{plan.plan_id}}" mat-button>EDIT</button> -->
+                                <button mat-button (click)="add(location.id)">ADD</button>
+                        </mat-card-actions>
+                    </div>
               </mat-card>
           </div>
       </div>
