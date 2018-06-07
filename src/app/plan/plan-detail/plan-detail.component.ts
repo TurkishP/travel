@@ -112,10 +112,12 @@ export class PlanDetailComponent implements OnInit, PipeTransform{
     console.log(day, locationId)
     this.afs.collection('plan_folder').doc(this.plan_id).collection('days').doc(day).collection('locations').doc(locationId).delete();
   }
-  map(day){
+
+  map(day:any){
+
     this.mapView = 1;
     const dialogRef = this.dialog.open(MapPopupComponent, {
-      data:{},
+      data:{day:day},
       height: '500px',
       width: '500px'
     });

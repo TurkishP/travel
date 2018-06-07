@@ -65,12 +65,7 @@ export class NewLocaPopupComponent implements OnInit {
    }
 
   ngOnInit() {
-    // this.uidSUB = this.auth.UID.subscribe(
-    //   uid => this.UID = uid
-    // )
-    // this.usernameSUB = this.auth.userName.subscribe(
-    //   username => this.username = username
-    // )
+
     this.afAuth.authState.subscribe(user=>{
       if(user) this.UID = user.uid
       this.username = user.displayName

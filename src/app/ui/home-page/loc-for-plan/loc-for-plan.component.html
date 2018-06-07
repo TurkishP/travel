@@ -1,0 +1,18 @@
+<h2>어느 계획을 위해 고르셨나요?</h2>
+
+        <div class="content">
+          <div *ngFor="let plan of plans">
+              <mat-card class ="OnePlan">
+
+                  <mat-card-title>{{plan.plan_name | uppercase}}</mat-card-title>
+                  <mat-card-subtitle>Days: {{plan.days}}</mat-card-subtitle>
+                  <mat-card-content> {{plan.id}}</mat-card-content>
+
+                  <mat-card-actions>
+                    <button mat-button (click)="keepForPlan(plan.id)">This One!</button>
+                    <!-- <i id="share" mat-dialog-title class="material-icons" md-18>share</i> -->
+                    <!-- <button mat-button *ngIf= "isAuth" (click)="liked()">LIKE</button> -->
+                  </mat-card-actions>
+              </mat-card>
+          </div>
+        </div>

@@ -75,9 +75,6 @@ export class PlanComponent implements OnInit {
       
     })
 
-
-    // this.uidSUB = this.auth.
-
   }
   toggleHover(event: boolean) {
     this.isHovering = event;
@@ -146,9 +143,7 @@ export class PlanComponent implements OnInit {
   }
 
   getLikes(){
-    // console.log(this.locationService.getlikes(this.UID))
-    // this.likes = this.locationService.getlikes(this.UID);
-    // console.log(this.likes)
+
     this.planService.getlikeLocations(this.UID)
     .subscribe(data=>{
         this.likes = data;
