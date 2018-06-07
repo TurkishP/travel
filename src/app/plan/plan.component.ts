@@ -10,7 +10,9 @@ import { NewplanPopupComponent } from './plan-detail/newplan-popup/newplan-popup
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LocationService } from '../core/location.service';
 import { NewLocaPopupComponent } from '../ui/home-page/new-loca-popup/new-loca-popup.component';
-
+import { UpdateLocaPopupComponent } from './update-loca-popup/update-loca-popup.component';
+import { AngularFireStorage } from 'angularfire2/storage';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 interface plan {
   days: number;
@@ -56,7 +58,8 @@ export class PlanComponent implements OnInit {
     public auth: AuthService,
     public dialog: MatDialog,
     private afAuth: AngularFireAuth,
-    public locationService: LocationService
+    public locationService: LocationService,
+    public afs : AngularFirestore
   ) { }
 
   ngOnInit() {
@@ -125,9 +128,21 @@ export class PlanComponent implements OnInit {
   deletePlan(plan_id:string){
     this.planService.deletePlan(plan_id);
   }
-  
+
   deleteLocation(location_id:string){
     this.locationService.deleteLocation(location_id);
+  }
+
+  updateLocation(location_info:string){
+    const dialogRef = this.dialog.open(UpdateLocaPopupComponent, {
+      data:{location_info:location_info},
+      height: '570px',
+      width: '600px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   getLikes(){
@@ -137,20 +152,19 @@ export class PlanComponent implements OnInit {
     this.planService.getlikeLocations(this.UID)
     .subscribe(data=>{
         this.likes = data;
-        this.info = data;
-
         
         for(let i = 0 ; i<this.likes.length;i++){
           this.planService.getLocationInfo(data[i].id)
           .ref.get().then(doc=>{
-            console.log(this.info[i].id)
-            this.likes[i] = doc.data()
 
+            this.likes[i].info = doc.data()
           })
         }
-        console.log(this.likes)
-
     })
+  }
+
+  deleteLike(like_id:string){
+    this.afs.collection('users').doc(this.UID).collection('like').doc(like_id).delete();
   }
 
 }
