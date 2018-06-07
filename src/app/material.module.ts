@@ -40,7 +40,6 @@ import {    MatAutocompleteModule,
   MatToolbarModule,
   MatTooltipModule,
  } from '@angular/material';
-import { DetailPopupComponent } from './ui/home-page/detail-popup/detail-popup.component';
  
 
 @NgModule({
@@ -109,8 +108,8 @@ import { DetailPopupComponent } from './ui/home-page/detail-popup/detail-popup.c
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,],
-    entryComponents: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent,LocInfoPopupComponent,DetailPopupComponent], //팝업할때 
-    declarations: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent],
+    entryComponents: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent,LocInfoPopupComponent], //팝업할때 
+    declarations: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent,LocInfoPopupComponent],
 
     bootstrap: [PlanDetailComponent],
     providers: []

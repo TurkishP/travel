@@ -23,14 +23,12 @@ import { PlanComponent } from './plan/plan.component';
 
 import { MaterialModule } from './material.module';
 // import { NewLocaPopupComponent } from './ui/home-page/new-loca-popup/new-loca-popup.component';
-import { LocInfoPopupComponent  } from './ui/home-page/loc-info-popup/loc-info-popup.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PlanComponent,
-    LocInfoPopupComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

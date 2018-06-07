@@ -62,6 +62,7 @@ export class PlanComponent implements OnInit {
       if(user) {this.UID = user.uid
         this.getPlans();
         this.getTravel();
+        this.getLikes();
         this.planService.uid$.next(this.UID);
         this.dName = user.displayName;
 
@@ -76,7 +77,6 @@ export class PlanComponent implements OnInit {
   toggleHover(event: boolean) {
     this.isHovering = event;
   }
-
 
   openDialog() {
     const dialogRef = this.dialog.open(NewplanPopupComponent, {
@@ -122,6 +122,7 @@ export class PlanComponent implements OnInit {
     // this.plans.subscribe(results=>this.planss = results)
 
   }
+
   getTravel(){
     this.locationService.userLocations(this.UID).subscribe((locations =>{
       this.locations = locations
@@ -135,6 +136,10 @@ export class PlanComponent implements OnInit {
   
   deleteLocation(location_id:string){
     this.locationService.deleteLocation(location_id);
+  }
+
+  getLikes(){
+      
   }
 
 }

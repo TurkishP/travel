@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-=======
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
->>>>>>> 4e53e7b886b6159bfc719df6fe6c5452889cce71
 import { NewLocaPopupComponent } from './new-loca-popup/new-loca-popup.component';
 import {  LocInfoPopupComponent } from './loc-info-popup/loc-info-popup.component';
 import { LocationService } from '../../core/location.service';
@@ -12,7 +8,6 @@ import { AuthService } from '../../core/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
-import { DetailPopupComponent } from './detail-popup/detail-popup.component';
 
 
 @Component({
@@ -86,7 +81,7 @@ export class HomePageComponent implements OnInit {
     });
   }
   detailPopup(locId) {
-    const dialogRef = this.dialog.open(DetailPopupComponent, {
+    const dialogRef = this.dialog.open(LocInfoPopupComponent, {
       data:{locID:locId},
       height: '90%',
       width: '90%'

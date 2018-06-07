@@ -56,6 +56,8 @@ export class PlanService {
     // this.afAuth.authState.subscribe(user=>{
     //   if(user) this.UID = user.uid
     // })
+
+    //queries for the plans of the user of UID
     this.queyrObservable = this.uid$.pipe(
       switchMap(uid => 
         this.afs.collection('plan_folder', ref => ref.where
