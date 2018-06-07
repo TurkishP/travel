@@ -80,6 +80,7 @@ export class HomePageComponent implements OnInit {
       width: '600px'
     });
   }
+  
   detailPopup(locId) {
     const dialogRef = this.dialog.open(LocInfoPopupComponent, {
       data:{locID:locId},

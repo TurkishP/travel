@@ -1,12 +1,12 @@
-<div class="text">
-<h5 > <strong>{{this.data.Name}} </strong> {{this.data.City}} {{this.data.Neighborhood}}</h5><br>
+<div *ngIf= "location" class="text">
+<h5 > <strong>{{location.name}} </strong> {{location.City}} {{location.neighborhood}}</h5><br>
 
 <mat-divider></mat-divider> 
 <br>
-<img src="{{this.data.Img}}">
+<img src="{{location.img}}">
 <br><br>
 <p>
-    {{this.data.Content}}
+    {{location.content}}
 </p>
 <br><br>
 <mat-divider></mat-divider> 

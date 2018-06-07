@@ -21,7 +21,7 @@
     <div *ngIf="location.name.includes(search.value)">
 
         <mat-card class="card">
-          <div (click)="openinfo(location.name,location.city,location.neighborhood,location.img,location.content)">
+          <div (click)="detailPopup(location.id)">
                 <img mat-card-image src="{{location.img}}">
                 <div mat-card-avatar class="header-image"></div>
                 <div  class="cardContent" >
