@@ -130,7 +130,7 @@ export class PlanComponent implements OnInit {
     this.locationService.deleteLocation(location_id);
   }
 
-  updateLocation(location_info:string){
+  updateLocation(location_info:any){
     const dialogRef = this.dialog.open(UpdateLocaPopupComponent, {
       data:{location_info:location_info},
       height: '570px',
