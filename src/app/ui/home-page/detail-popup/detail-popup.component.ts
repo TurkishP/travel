@@ -31,9 +31,13 @@ export class DetailPopupComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getLocation();
   }
 
   getLocation(){
-    // this.location = this.loca.getlocation(this.data)
+    this.loca.getlocation(this.data.locID).subscribe(results=>{
+      this.location = results;
+      console.log(this.location)
+    })
   }
 }

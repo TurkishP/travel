@@ -99,7 +99,7 @@ export class LocationService {
     this.locationsCollection.doc(id).delete();
   }
 
-  getlocation(id:string): Observable<location>{
-    return this.afs.collection('locations').doc<location>(id).valueChanges();
+  getlocation(id:string): Observable<any>{
+    return this.locationsCollection.doc(id).valueChanges();
   }
 }

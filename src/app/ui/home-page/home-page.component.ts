@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import { NewLocaPopupComponent } from './new-loca-popup/new-loca-popup.component';
 import { LocationService } from '../../core/location.service';
 import { Observable } from 'rxjs';
@@ -24,6 +24,7 @@ export class HomePageComponent implements OnInit {
     private auth: AuthService,
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
+    public snackBar: MatSnackBar,
 
   ) { }
 
@@ -56,6 +57,10 @@ export class HomePageComponent implements OnInit {
     console.log(location_id, this.UID)
     this.afs.collection('users').doc(this.UID).collection('like').doc(location_id).set({
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
+    }).then(()=>{
+      this.snackBar.open("Starred!", "Close", {
+        duration: 1300,
+      });
+   });
   }
 }
