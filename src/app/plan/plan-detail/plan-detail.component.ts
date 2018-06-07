@@ -114,8 +114,6 @@ export class PlanDetailComponent implements OnInit, PipeTransform{
   }
 
   map(day:any){
-    console.log("HIHI")
-    console.log(day)
 
     this.mapView = 1;
     const dialogRef = this.dialog.open(MapPopupComponent, {

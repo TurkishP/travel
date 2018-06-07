@@ -8,6 +8,7 @@ import { NewplanPopupComponent } from './plan/plan-detail/newplan-popup/newplan-
 import { UpdateLocaPopupComponent } from './plan/update-loca-popup/update-loca-popup.component';
 import { LocInfoPopupComponent } from './ui/home-page/loc-info-popup/loc-info-popup.component';
 import { MapPopupComponent } from './plan/plan-detail/map-popup/map-popup.component';
+import { LocForPlanComponent } from './ui/home-page/loc-for-plan/loc-for-plan.component';
 
 
 import {    MatAutocompleteModule,
@@ -111,8 +112,10 @@ import {    MatAutocompleteModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,],
-    entryComponents: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent,LocInfoPopupComponent,UpdateLocaPopupComponent,MapPopupComponent],
-    declarations: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent,LocInfoPopupComponent,UpdateLocaPopupComponent,MapPopupComponent],
+    entryComponents: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, 
+      NewplanPopupComponent,LocInfoPopupComponent,UpdateLocaPopupComponent,MapPopupComponent,LocForPlanComponent],
+    declarations: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, 
+      NewplanPopupComponent,LocInfoPopupComponent,UpdateLocaPopupComponent,MapPopupComponent,LocForPlanComponent],
     bootstrap: [PlanDetailComponent],
 
     providers: []

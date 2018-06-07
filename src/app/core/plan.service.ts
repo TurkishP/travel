@@ -154,6 +154,18 @@ getMyPlans(): Observable<any[]> {
     );
   }
 
+  getPinnedLocations(plan_id:string): Observable<any[]>{
+    return this.afs.collection('plan_folder').doc(plan_id).collection('pinnedLocations').snapshotChanges()
+      .pipe(
+      map((actions)=>{
+        return actions.map((a)=>{
+          const data = a.payload.doc.data();
+          return {id: a.payload.doc.id, ...data};
+        })
+      })
+    );
+  }
+
 }
 
  

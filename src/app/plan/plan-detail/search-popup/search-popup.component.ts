@@ -18,6 +18,9 @@ import { map } from 'rxjs/operators';
 })
 export class SearchPopupComponent implements OnInit {
   locations: Observable<any[]>;
+  savedLocations: any;
+
+
   constructor(
     public locationService: LocationService,
     public planService : PlanService,
@@ -31,10 +34,27 @@ export class SearchPopupComponent implements OnInit {
 
   ngOnInit() {
     this.getlocations();
+    this.locationsForPlan();
   }
 
   getlocations(){
     this.locations = this.locationService.getLocations();
+  }
+
+  locationsForPlan(){
+    this.planService.getPinnedLocations(this.data.planID)
+    .subscribe(data=>{
+      // console.log(data)
+        this.savedLocations = data;
+        
+        for(let i = 0 ; i<this.savedLocations.length;i++){
+          this.planService.getLocationInfo(data[i].id)
+          .ref.get().then(doc=>{
+
+            this.savedLocations[i].info = doc.data()
+          })
+        }
+    })
   }
 
   add(locationId){
