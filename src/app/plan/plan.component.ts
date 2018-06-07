@@ -10,7 +10,7 @@ import { NewplanPopupComponent } from './plan-detail/newplan-popup/newplan-popup
 import { AngularFireAuth } from 'angularfire2/auth';
 import { LocationService } from '../core/location.service';
 import { NewLocaPopupComponent } from '../ui/home-page/new-loca-popup/new-loca-popup.component';
-
+import { UpdateLocaPopupComponent } from './update-loca-popup/update-loca-popup.component';
 
 interface plan {
   days: number;
@@ -47,6 +47,7 @@ export class PlanComponent implements OnInit {
   planSub: Subscription;
   dName: string;
   isHovering: boolean;
+  loca: location;
   // plans: Observable<any[]>;
 
   constructor(
@@ -132,9 +133,20 @@ export class PlanComponent implements OnInit {
   deletePlan(plan_id:string){
     this.planService.deletePlan(plan_id);
   }
-  
+
   deleteLocation(location_id:string){
     this.locationService.deleteLocation(location_id);
   }
 
+  updateLocation(location_id:string){
+    const dialogRef = this.dialog.open(UpdateLocaPopupComponent, {
+      data:{location_id:location_id},
+      height: '570px',
+      width: '600px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

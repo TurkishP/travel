@@ -98,4 +98,21 @@ export class LocationService {
   deleteLocation(id:string){
     this.locationsCollection.doc(id).delete();
   }
+
+  editLocation(id:string){
+  }
+
+  getLocation(locationID): Observable<any[]>{
+    return this.locations = this.afs.collection('locations', ref => ref.where
+    ('id', '==', locationID))
+    .snapshotChanges().pipe(
+     map(actions => actions.map(a => {
+      const data = a.payload.doc.data() as location;
+      const id = a.payload.doc.id;
+      return {id, ...data};
+    }))
+   );
+  }
+
 }
+

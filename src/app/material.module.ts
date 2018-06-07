@@ -5,7 +5,7 @@ import { SearchPopupComponent} from './plan/plan-detail/search-popup/search-popu
 import { PlanDetailComponent } from './plan/plan-detail/plan-detail.component';
 import { NewLocaPopupComponent } from './ui/home-page/new-loca-popup/new-loca-popup.component';
 import { NewplanPopupComponent } from './plan/plan-detail/newplan-popup/newplan-popup.component';
-
+import { UpdateLocaPopupComponent } from './plan/update-loca-popup/update-loca-popup.component';
 
 import {    MatAutocompleteModule,
   MatButtonModule,
@@ -108,8 +108,8 @@ import {    MatAutocompleteModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,],
-    entryComponents: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent],
-    declarations: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent],
+    entryComponents: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent,UpdateLocaPopupComponent],
+    declarations: [PlanDetailComponent, SearchPopupComponent, NewLocaPopupComponent, NewplanPopupComponent,UpdateLocaPopupComponent],
     bootstrap: [PlanDetailComponent],
     providers: []
 })

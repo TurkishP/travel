@@ -1,0 +1,62 @@
+.dropzone { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    font-weight: 100;
+    height: 500px;
+    width: 200px;
+    border: 2px dashed #f16624;
+    border-radius: 5px;
+    background: white;
+    margin: 10px 0;
+
+    &.hovering {
+        border: 2px solid #f16624;
+        color: #dadada !important;
+    }
+
+    .file-label {
+        font-size: 1.2em;
+    }
+}
+
+progress::-webkit-progress-value {
+    transition: width 0.1s ease;
+}
+
+img {
+    width: 250px
+}
+
+.columns {
+    float: left;
+    width: 260px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 15px;
+    // margin-top:10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+
+}
+
+#submitButton{
+    position: absolute;
+    right: 23px;
+    bottom: 20px;
+}
+
+.container{
+    width: 530px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+mat-form-field{
+    width: 200px;
+}

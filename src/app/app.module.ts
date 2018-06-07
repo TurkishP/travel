@@ -22,6 +22,7 @@ import { environment } from '../environments/environment';
 import { PlanComponent } from './plan/plan.component';
 
 import { MaterialModule } from './material.module';
+//import { UpdateLocaPopupComponent } from './update-loca-popup/update-loca-popup.component';
 // import { NewLocaPopupComponent } from './ui/home-page/new-loca-popup/new-loca-popup.component';
 
 
@@ -29,6 +30,7 @@ import { MaterialModule } from './material.module';
   declarations: [
     AppComponent,
     PlanComponent,
+    //UpdateLocaPopupComponent,
     
   ],
   imports: [

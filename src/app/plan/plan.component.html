@@ -44,7 +44,7 @@
                             <mat-card-content>{{location.content}}</mat-card-content>
                     
                             <mat-card-actions>
-                                <!-- <button routerLink="/plan-detail/{{plan.id}}" mat-button>EDIT</button> -->
+                                <button mat-button (click)="updateLocation(location.id)">EDIT</button>
                                 <button mat-button (click)="deleteLocation(location.id)">DELETE</button>
                             </mat-card-actions>
                     </mat-card>
