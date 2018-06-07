@@ -47,7 +47,8 @@ export class PlanComponent implements OnInit {
   planSub: Subscription;
   dName: string;
   isHovering: boolean;
-  likes: location[]=[];
+  likes: any;
+  info: any;
   // plans: Observable<any[]>;
 
   constructor(
@@ -109,7 +110,7 @@ export class PlanComponent implements OnInit {
     // this.planService.getMyPlans2();
         this.planService.queyrObservable.subscribe((plans =>{
           this.plans = plans
-          console.log(this.plans)
+          // console.log(this.plans)
 
       }))
   }
@@ -130,7 +131,26 @@ export class PlanComponent implements OnInit {
   }
 
   getLikes(){
-    this.locationService.getlikes(this.UID);
+    // console.log(this.locationService.getlikes(this.UID))
+    // this.likes = this.locationService.getlikes(this.UID);
+    // console.log(this.likes)
+    this.planService.getlikeLocations(this.UID)
+    .subscribe(data=>{
+        this.likes = data;
+        this.info = data;
+
+        
+        for(let i = 0 ; i<this.likes.length;i++){
+          this.planService.getLocationInfo(data[i].id)
+          .ref.get().then(doc=>{
+            console.log(this.info[i].id)
+            this.likes[i] = doc.data()
+
+          })
+        }
+        console.log(this.likes)
+
+    })
   }
 
 }

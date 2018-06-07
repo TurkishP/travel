@@ -37,7 +37,7 @@ export class LocationService {
   UID: string;
   uid$ = new Subject<String>();
   username: string;
-  likedLocIDs:any;
+  likedLocations:any;
   constructor( 
     private afs: AngularFirestore,
     private auth: AuthService,
@@ -143,11 +143,24 @@ export class LocationService {
     return this.locationsCollection.doc(id).valueChanges();
   }
 
-  getlikes(user_id:string){
-    this.planService.getlikeLocations(user_id)
+  getlikes(user_id:string): any{
+   this.planService.getlikeLocations(user_id)
     .subscribe(data=>{
-      
+        this.likedLocations = data;
+        
+        for(let i = 0 ; i<this.likedLocations.length;i++){
+          this.planService.getLocationInfo(data[i].id)
+          .ref.get().then(doc=>{
+            this.likedLocations[i].info = doc.data()
+          })
+          if( i == this.likedLocations.length-1){
+            console.log(this.likedLocations)
+            return this.likedLocations;
+          }
+        }
+        
     })
-
+    
   }
+
 }
