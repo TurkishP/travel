@@ -37,7 +37,7 @@ export class LocationService {
   UID: string;
   uid$ = new Subject<String>();
   username: string;
-  likedLocIDs:any;
+  likedLocations:any;
   constructor( 
     private afs: AngularFirestore,
     private auth: AuthService,
@@ -130,7 +130,7 @@ export class LocationService {
       const data = a.payload.doc.data() as location;
       const id = a.payload.doc.id;
       return {id, ...data};
-    }))
+    })) 
    );
 
   }
@@ -142,17 +142,28 @@ export class LocationService {
   editLocation(id:string){
   }
 
-  getLocation(locationID): Observable<any[]>{
-    return this.locations = this.afs.collection('locations', ref => ref.where
-    ('id', '==', locationID))
-    .snapshotChanges().pipe(
-     map(actions => actions.map(a => {
-      const data = a.payload.doc.data() as location;
-      const id = a.payload.doc.id;
-      return {id, ...data};
-    }))
-   );
+  getlikes(user_id:string): any{
+   this.planService.getlikeLocations(user_id)
+    .subscribe(data=>{
+        this.likedLocations = data;
+        
+        for(let i = 0 ; i<this.likedLocations.length;i++){
+          this.planService.getLocationInfo(data[i].id)
+          .ref.get().then(doc=>{
+            this.likedLocations[i].info = doc.data()
+          })
+          if( i == this.likedLocations.length-1){
+            console.log(this.likedLocations)
+            return this.likedLocations;
+          }
+        }
+        
+    })
   }
+
+    getlocation(id:string): Observable<any>{
+       return this.locationsCollection.doc(id).valueChanges();
+       }
 
 }
 

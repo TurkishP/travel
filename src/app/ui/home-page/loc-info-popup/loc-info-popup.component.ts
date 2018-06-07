@@ -12,7 +12,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class LocInfoPopupComponent implements OnInit {
 
-  location: Observable<any>;
+  location: Observable<any[]>;
   UID : string;
   userdata: any;
   comments: Observable<any[]>;
@@ -26,8 +26,6 @@ export class LocInfoPopupComponent implements OnInit {
 ) {
   this.afAuth.authState.subscribe(user=>{
     if(user) {this.UID = user.uid}
-
-    
   })
 
 
@@ -41,6 +39,7 @@ export class LocInfoPopupComponent implements OnInit {
   getLocation(){
     this.loca.getlocation(this.data.locID).subscribe(result=>{
       this.location = result;
+      console.log(this.location)
     })
   }
 

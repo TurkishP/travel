@@ -156,36 +156,4 @@ getMyPlans(): Observable<any[]> {
 
 }
 
-
-// let db = {
-//   locations:[],
-//   notes:[],
-//   plan_folder:[
-//     {
-//       days:3,
-//       img:"",
-//       plan_name:"",
-//       uid:"",
-//       day:[
-//         {
-//           uid:"",
-//           info:"1일차",
-//           info2:"2018-06-03",
-//           location:[
-//             {
-//               uid:""
-//             },
-//             {
-
-//             }
-//           ]
-//         }
-//       ]
-//     },
-//     {
-
-//     }
-//   ],
-//   reviews:[],
-//   users:[]
-// }
+ 
