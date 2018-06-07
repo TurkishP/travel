@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { PlanService } from './plan.service';
 
 interface location {
   city: string;
@@ -36,10 +37,12 @@ export class LocationService {
   UID: string;
   uid$ = new Subject<String>();
   username: string;
+  likedLocIDs:any;
   constructor( 
     private afs: AngularFirestore,
     private auth: AuthService,
     private afAuth: AngularFireAuth,
+    private planService: PlanService
   ) {
     this.locationsCollection = this.afs.collection('locations');
     
@@ -138,5 +141,16 @@ export class LocationService {
 
   getlocation(id:string): Observable<any>{
     return this.locationsCollection.doc(id).valueChanges();
+  }
+
+  getlikes(user_id:string){
+    this.afs.collection('users').doc(user_id).collection('like').snapshotChanges().subscribe(data=>{
+      this.likedLocIDs = data;
+      console.log(this.likedLocIDs)
+      for(let x=0; x<this.likedLocIDs.length; x++){
+        // this.planService.getLocationInfo(data[x].)
+      }
+    })
+
   }
 }
