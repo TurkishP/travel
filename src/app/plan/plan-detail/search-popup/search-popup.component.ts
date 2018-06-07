@@ -9,7 +9,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 
 import { planfolder } from '../../planfolder';
 import { ActivatedRoute } from '@angular/router';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -24,6 +24,8 @@ export class SearchPopupComponent implements OnInit {
     public planService : PlanService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public db: AngularFirestore,
+    public snackBar: MatSnackBar,
+
   
   ){
   }
@@ -50,12 +52,12 @@ export class SearchPopupComponent implements OnInit {
     // console.log(days.day);
     this.db.collection('plan_folder').doc(this.data.planID).collection('days').doc(this.data.Day).collection('locations').doc(locationId).set({
       // order: this.data.Order+1
-    })
-  //   .then(()=>{
-  //     this.snackBar.open("ADDED", "Close", {
-  //       duration: 2000,
-  //     });
-  //  });
+    }).then(()=>{
+      this.snackBar.open("Added!", "Close", {
+        duration: 1300,
+      })
+   });
   }
   
+
 }

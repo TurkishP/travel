@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PlanService } from '../core/plan.service';
 import { Observable } from 'rxjs';
 import { AuthService } from '../core/auth.service';
-import { planfolder } from './planfolder';
+
 import { getMultipleValuesInSingleSelectionError } from '@angular/cdk/collections';
 import { Subscription } from 'rxjs';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
@@ -48,6 +48,7 @@ export class PlanComponent implements OnInit {
   dName: string;
   isHovering: boolean;
   loca: location;
+  likes: location[]=[];
   // plans: Observable<any[]>;
 
   constructor(
@@ -63,6 +64,7 @@ export class PlanComponent implements OnInit {
       if(user) {this.UID = user.uid
         this.getPlans();
         this.getTravel();
+        this.getLikes();
         this.planService.uid$.next(this.UID);
         this.dName = user.displayName;
 
@@ -77,7 +79,6 @@ export class PlanComponent implements OnInit {
   toggleHover(event: boolean) {
     this.isHovering = event;
   }
-
 
   openDialog() {
     const dialogRef = this.dialog.open(NewplanPopupComponent, {
@@ -107,27 +108,18 @@ export class PlanComponent implements OnInit {
 
   getPlans(){
     // this.planService.getMyPlans2();
-    this.planService.queyrObservable.subscribe((plans =>{
-      this.plans = plans
-      console.log(this.plans)
+        this.planService.queyrObservable.subscribe((plans =>{
+          this.plans = plans
+          console.log(this.plans)
 
-  }))
-
-    // this.plans = this.planService.getMyPlans();
-    // console.log((this.plans))
-    // this.plans.subscribe(result=>{
-    //   console.log(result)
-    // }
-    // this.planSub = this.planService.plansChanged.subscribe(
-    //   plan => this.plans = plan);
-    // this.plans.subscribe(results=>this.planss = results)
-
+      }))
   }
+
   getTravel(){
-    this.locationService.userLocations(this.UID).subscribe((locations =>{
-      this.locations = locations
-    })
-  )
+      this.locationService.userLocations(this.UID).subscribe((locations =>{
+        this.locations = locations
+        })
+      )
   }
 
   deletePlan(plan_id:string){
@@ -138,9 +130,9 @@ export class PlanComponent implements OnInit {
     this.locationService.deleteLocation(location_id);
   }
 
-  updateLocation(location_id:string){
+  updateLocation(location_info:string){
     const dialogRef = this.dialog.open(UpdateLocaPopupComponent, {
-      data:{location_id:location_id},
+      data:{location_info:location_info},
       height: '570px',
       width: '600px'
     });
@@ -149,4 +141,8 @@ export class PlanComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+  getLikes(){
+    // this.locationService.getlikes(this.UID);
+  }
+
 }

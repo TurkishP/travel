@@ -32,7 +32,7 @@ interface location {
 })
 export class UpdateLocaPopupComponent implements OnInit {
   private locations: location[][];
-  private location_id: string;
+  private location_info: any;
   private UID: string;
   private username: string;
   private loca_name:string;
@@ -49,8 +49,16 @@ export class UpdateLocaPopupComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.location_id = this.data.location_id;
+    this.location_info = this.data.location_info;
+    console.log(this.location_info)
   }
-  updateLocation(){
+  editLocation(name,city,neighborhood,content){
+    console.log(this.location_info.id,name,city,neighborhood,content)
+    this.fs.collection('locations').doc(this.location_info.id).update({
+      city: city,
+      name: name,
+      neighborhood: neighborhood,
+      content: content
+    })
   }
 }

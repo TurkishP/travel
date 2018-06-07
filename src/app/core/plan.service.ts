@@ -56,6 +56,8 @@ export class PlanService {
     // this.afAuth.authState.subscribe(user=>{
     //   if(user) this.UID = user.uid
     // })
+
+    //queries for the plans of the user of UID
     this.queyrObservable = this.uid$.pipe(
       switchMap(uid => 
         this.afs.collection('plan_folder', ref => ref.where
@@ -70,31 +72,6 @@ export class PlanService {
 
  }
 
-  
-// getMyPlans2(){
-//   this.queyrObservable = this.uid$.pipe(
-//     switchMap(uid => 
-//       this.afs.collection('plan_folder', ref => ref.where
-//       ('uid', '==', uid)).snapshotChanges().pipe(
-//         map((actions) => {
-//           return actions.map((a) => {
-//             const data = a.payload.doc.data();
-//             console.log(a.payload.doc.data())
-//             return { id: a.payload.doc.id, ...data };
-//           });
-//         })
-//       )));
-
-//   // return this.afs.collection('plan_foler', ref => ref.where('uid', '==', this.UID )).snapshotChanges().pipe(
-//   //   map((actions) => {
-//   //     return actions.map((a) => {
-//   //       const data = a.payload.doc.data();
-//   //       console.log(a.payload.doc.data())
-//   //       return { id: a.payload.doc.id, ...data };
-//   //     });
-//   //   })
-//   // );
-// }
 
 getMyPlans(): Observable<any[]> {
     return this.plansCollection.snapshotChanges().pipe(
@@ -121,7 +98,8 @@ getMyPlans(): Observable<any[]> {
 
     for(let i=1; i<=days; i++){
       this.plansCollection.doc(UID.concat(name)).collection('days').doc(i.toString()).set({
-        loc_count:0
+        loc_count:0,
+        day: i
       });
     }
   }
@@ -136,7 +114,8 @@ getMyPlans(): Observable<any[]> {
 
   getPlanDays(plan_id: string): Observable<any[]>{
 
-    return this.afs.collection('plan_folder').doc(plan_id).collection('days').snapshotChanges().pipe(
+    return this.afs.collection('plan_folder').doc(plan_id).collection('days', ref => ref.orderBy
+    ('day','asc')).snapshotChanges().pipe(
       map((actions)=>{
         return actions.map((a)=>{
           const data = a.payload.doc.data();
@@ -161,6 +140,18 @@ getMyPlans(): Observable<any[]> {
 
   getLocationInfo(loc_id:string){
      return this.afs.collection('locations').doc(loc_id)
+  }
+
+  getlikeLocations(user_id:string): Observable<any[]>{
+    return this.afs.collection('users').doc(user_id).collection('like').snapshotChanges()
+      .pipe(
+      map((actions)=>{
+        return actions.map((a)=>{
+          const data = a.payload.doc.data();
+          return {id: a.payload.doc.id, ...data};
+        })
+      })
+    );
   }
 
 }

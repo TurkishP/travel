@@ -1,0 +1,32 @@
+<div *ngIf= "location" class="text">
+<h5 > <strong>{{location.name}} </strong> {{location.City}} {{location.neighborhood}}</h5><br>
+
+<mat-divider></mat-divider> 
+<br>
+<img src="{{location.img}}">
+<br><br>
+<p>
+    {{location.content}}
+</p>
+<br>
+
+<mat-divider></mat-divider> 
+<br>
+
+<div class="existingComments" *ngFor="let comment of comments | async">
+<!-- <div *ngIf="comment.content"> -->
+    <!-- <p>{{comment.timestamp}}</p> -->
+    <button  mat-icon-button> <img class="commentImg" src="{{comment.photoURL}}" width="24px" alt="travel Angular4 Demo App"/> </button>
+    <strong> {{comment.username}} says : </strong>{{comment.content}}
+    <button  mat-icon-button (click)="deleteComment(comment.id, comment.uid)">  remove </button>
+    <!-- </div> -->
+</div>
+
+<mat-icon aria-label="Example icon-button with a heart icon">person</mat-icon>
+<mat-form-field class="example-full-width">
+    <textarea matInput placeholder="댓글달기.." #comment></textarea>
+</mat-form-field>
+  <button  mat-icon-button (click)="newComment(comment.value)"> <img src="assets/images/paper-plane.png" width="40px" alt="travel Angular4 Demo App"/> </button>
+ 
+</div>
+

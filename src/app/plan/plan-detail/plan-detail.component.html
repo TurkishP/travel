@@ -16,8 +16,8 @@
                 <mat-panel-title>
                   Day {{day.id}}
                 </mat-panel-title>
-                <mat-panel-description>
-                  Edit Locations
+                <mat-panel-description (click)="map(day)">
+                  Edit Locations 
                 </mat-panel-description>
               </mat-expansion-panel-header>
               <div *ngFor="let location of day.locations">

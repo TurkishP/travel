@@ -30,8 +30,6 @@ import { MaterialModule } from './material.module';
   declarations: [
     AppComponent,
     PlanComponent,
-    //UpdateLocaPopupComponent,
-    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -47,7 +45,7 @@ import { MaterialModule } from './material.module';
     AngularFireStorageModule,
     AngularFireFunctionsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
-    MaterialModule
+    MaterialModule,
   ],
   bootstrap: [AppComponent]
 })
