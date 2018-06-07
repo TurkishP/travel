@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { AuthService } from '../../../core/auth.service';
 import { PlanService } from '../../../core/plan.service';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -11,6 +11,7 @@ import {
 } from 'angularfire2/storage';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { tap, finalize } from 'rxjs/operators';
+import { MAT_DIALOG_DATA } from '@angular/material';
 declare const naver: any;
 
 @Component({
@@ -48,6 +49,7 @@ export class MapPopupComponent implements OnInit {
     private plan: PlanService,
     private afAuth: AngularFireAuth,
     private storage: AngularFireStorage,
+    @Inject(MAT_DIALOG_DATA) public data: any,
 
   ) { }
 
@@ -124,17 +126,20 @@ export class MapPopupComponent implements OnInit {
     );
   }
   setMarker() {
-    for(var i = 0; i < 1; i++) {
+    for(var i = 0; i < this.data.day.locations.length; i++) {
+      console.log(this.data.day.locations[i].info.geoloc._lat)
       var marker = new naver.maps.Marker({
-        position: new naver.maps.LatLng(36.0190335, 129.3433895),
+        position: new naver.maps.LatLng(this.data.day.locations[i].info.geoloc._lat,this.data.day.locations[i].info.geoloc._long),
         map: this.map,
       });
       
       var infoWindow = new naver.maps.InfoWindow({
         content: [
           '<div style="padding: 7px 10px; max-width: 300px;">',
-          '   <div style="font-size: 18px; font-weight: 600; margin: 3px 0px;">'+'title'+' </div>',
-          '   <div style="font-size: 15px; margin: 3px 0px;">'+'tel: ' +'054'+'</div>',
+          '   <div style="font-size: 18px; font-weight: 600; margin: 3px 0px;">'+this.data.day.locations[i].info.name+' </div>',
+          '   <div style="font-size: 13px; margin: 3px 0px;">'+this.data.day.locations[i].info.neighborhood+'</div>',
+          '   <div > <img src="'+this.data.day.locations[i].info.img +'"></div>',
+
           '</div>'].join(''),
         borderWidth: 1,
         borderColor: "#A3BDD7",
