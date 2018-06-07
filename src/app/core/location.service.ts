@@ -130,7 +130,7 @@ export class LocationService {
       const data = a.payload.doc.data() as location;
       const id = a.payload.doc.id;
       return {id, ...data};
-    }))
+    })) 
    );
 
   }
@@ -161,17 +161,9 @@ export class LocationService {
     })
   }
 
-  getlocation(locationID): Observable<any[]>{
-    return this.locations = this.afs.collection('locations', ref => ref.where
-    ('id', '==', locationID))
-    .snapshotChanges().pipe(
-     map(actions => actions.map(a => {
-      const data = a.payload.doc.data() as location;
-      const id = a.payload.doc.id;
-      return {id, ...data};
-    }))
-   );
-  }
+    getlocation(id:string): Observable<any>{
+       return this.locationsCollection.doc(id).valueChanges();
+       }
 
 }
 

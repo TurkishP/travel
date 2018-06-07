@@ -38,7 +38,7 @@ export class LocInfoPopupComponent implements OnInit {
 
   getLocation(){
     this.loca.getlocation(this.data.locID).subscribe(result=>{
-      // this.location = result;
+      this.location = result;
       console.log(this.location)
     })
   }
