@@ -34,7 +34,22 @@
     </mat-tab>
 
     <mat-tab label="Locations">
-
+        <div class="displayContents">
+            <div *ngFor="let location of locations">
+              <mat-card class="OneLocation">
+                            <img mat-card-image src="{{location.img}}">
+                            <div mat-card-avatar class="header-image"></div>
+                            <mat-card-title>{{location.name}}</mat-card-title>
+                            <mat-card-subtitle>{{location.city}} {{location.neighborhood}}</mat-card-subtitle>
+                            <mat-card-content>{{location.content}}</mat-card-content>
+                    
+                            <mat-card-actions>
+                                <!-- <button routerLink="/plan-detail/{{plan.id}}" mat-button>EDIT</button> -->
+                                <button mat-button (click)="deleteLocation(location.id)">DELETE</button>
+                            </mat-card-actions>
+                    </mat-card>
+            </div>
+          </div>
     </mat-tab>
 
     <mat-tab label="Like">
