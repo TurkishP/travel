@@ -20,6 +20,7 @@
   <div *ngFor="let location of locations | async">
     <div *ngIf="location.name.includes(search.value)">
 
+<<<<<<< HEAD
         <mat-card class="card" (click)="openinfo(location.name,location.city,location.neighborhood,location.img,location.content)">
                 <img mat-card-image src="{{location.img}}">
                 <div mat-card-avatar class="header-image"></div>
@@ -28,6 +29,18 @@
                 <mat-card-content id="contents"> #예쁨 #주의 {{location.content}}</mat-card-content>
                 <span id="content">0</span>
                 <button (click)="add();">ADD </button>
+=======
+        <mat-card class="card">
+          <div (click)="detailPopup(location.id)">
+                <img mat-card-image src="{{location.img}}">
+                <div mat-card-avatar class="header-image"></div>
+                <div  class="cardContent" >
+                    <mat-card-title>{{location.name}}</mat-card-title>
+                    <mat-card-subtitle>{{location.city}} {{location.neighborhood}}</mat-card-subtitle>
+                </div>
+                <!-- <mat-card-content>{{location.content}}</mat-card-content> -->
+         </div>  
+>>>>>>> 4e53e7b886b6159bfc719df6fe6c5452889cce71
                 <mat-card-actions>
                         
                         <!-- <button mat-button (click)="add(location.id)">ADD</button> -->

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+=======
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+>>>>>>> 4e53e7b886b6159bfc719df6fe6c5452889cce71
 import { NewLocaPopupComponent } from './new-loca-popup/new-loca-popup.component';
 import {  LocInfoPopupComponent } from './loc-info-popup/loc-info-popup.component';
 import { LocationService } from '../../core/location.service';
@@ -8,6 +12,7 @@ import { AuthService } from '../../core/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
+import { DetailPopupComponent } from './detail-popup/detail-popup.component';
 
 
 @Component({
@@ -24,6 +29,7 @@ export class HomePageComponent implements OnInit {
     private auth: AuthService,
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
+    public snackBar: MatSnackBar,
 
   ) { }
 
@@ -78,11 +84,13 @@ export class HomePageComponent implements OnInit {
       height: '570px',
       width: '600px'
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+  }
+  detailPopup(locId) {
+    const dialogRef = this.dialog.open(DetailPopupComponent, {
+      data:{locID:locId},
+      height: '90%',
+      width: '90%'
     });
-
   }
 
   deleteLocation(id: string) {
@@ -93,6 +101,10 @@ export class HomePageComponent implements OnInit {
     console.log(location_id, this.UID)
     this.afs.collection('users').doc(this.UID).collection('like').doc(location_id).set({
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
+    }).then(()=>{
+      this.snackBar.open("Starred!", "Close", {
+        duration: 1300,
+      });
+   });
   }
 }

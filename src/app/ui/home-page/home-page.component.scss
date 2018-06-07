@@ -3,16 +3,26 @@
 }
 
 .card{
+<<<<<<< HEAD
 
     width: 350px;
     //height: 450px;
+=======
+    width: 300px;
+    // height: 350px;
+>>>>>>> 4e53e7b886b6159bfc719df6fe6c5452889cce71
     margin: 10px 10px 10px 0;
 
 }
 
 img{
+<<<<<<< HEAD
     height: 50%;
     width: 70%;
+=======
+    // height: 50%;
+    width: 100%;
+>>>>>>> 4e53e7b886b6159bfc719df6fe6c5452889cce71
 }
 
 .displayContents{
@@ -23,13 +33,14 @@ img{
 }
 
 #like{
-    position: relative;
-    margin-left: 300px;
+    position: absolute;
+    margin-left: 257px;
     top:0;
 }
 
 .container{
     width: 80%;
+<<<<<<< HEAD
     margin-left:12%;
     margin-right:10%;  
 }
@@ -37,4 +48,21 @@ img{
 .display{
     margin-left:12%;
     margin-right:10%; 
+=======
+    margin-left:17%;
+    margin-right:3%;
+}
+
+mat-card-title{
+    margin-bottom: 0;
+}
+
+mat-card-image{
+    margin-bottom: -20px;
+}
+.cardContent{
+    position: absolute;
+    bottom: 0px;
+    left: 7px;
+>>>>>>> 4e53e7b886b6159bfc719df6fe6c5452889cce71
 }
