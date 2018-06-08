@@ -33,7 +33,7 @@ export class LocInfoPopupComponent implements OnInit {
 
   ngOnInit() {
     this.getLocation();
-
+    this.getComments();
   }
 
   getLocation(){
@@ -55,6 +55,7 @@ export class LocInfoPopupComponent implements OnInit {
 
   getComments(){
       this.comments=this.loca.getComments(this.data.locID);
+      console.log(this.comments);
   }
 
   deleteComment(comment_id:string, writer_uid:string){
