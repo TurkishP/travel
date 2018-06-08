@@ -1,10 +1,10 @@
 .new-location{
-    width: 200px;
+    width: 300px;
 }
 
 .card{
     width: 300px;
-    // height: 350px;
+    height: 350px;
     margin: 10px 10px 10px 0;
 
 }
@@ -17,7 +17,7 @@ img{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-
+    
 }
 
 #like{
@@ -35,11 +35,11 @@ img{
 .contents{
     width: 80%;
     margin-left:17%;
-    margin-right:3%;
+    margin-right:17%;
 }
 
 mat-card-title{
-    margin-bottom: 0;
+    margin-bottom: 5px;
 }
 
 mat-card-image{
@@ -50,5 +50,5 @@ mat-card-image{
     // margin-top: 200px;
     position: absolute;
     bottom: 0px;
-    left: 7px;
+    // left: 7px;
 }

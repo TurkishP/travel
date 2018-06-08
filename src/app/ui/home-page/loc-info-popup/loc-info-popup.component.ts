@@ -33,7 +33,7 @@ export class LocInfoPopupComponent implements OnInit {
 
   ngOnInit() {
     this.getLocation();
-    this.getComments();
+
   }
 
   getLocation(){
@@ -67,6 +67,5 @@ export class LocInfoPopupComponent implements OnInit {
 
   }
 
-  
   //comments 가져오는 함수 구현해야함
 }
