@@ -26,7 +26,16 @@
 <mat-form-field class="example-full-width">
     <textarea matInput placeholder="댓글달기.." #comment></textarea>
 </mat-form-field>
-  <button  mat-icon-button (click)="newComment(comment.value)"> <img src="assets/images/paper-plane.png" width="40px" alt="travel Angular4 Demo App"/> </button>
+  <button  mat-icon-button (click)="newComment(comment.value)" > <img src="assets/images/paper-plane.png" width="40px" alt="travel Angular4 Demo App"/> </button>
  
 </div>
 
+
+<!-- <mat-icon aria-label="Example icon-button with a heart icon">person</mat-icon>
+<mat-form-field class="example-full-width" #commentForm="ngForm">
+    <input  matInput placeholder="댓글달기.." #comment [hidden]="name.valid || name.pristine"
+    class="alert alert-danger"></input>
+</mat-form-field>
+  <button  mat-icon-button (click)="newComment(comment.value)" [disabled]="!commentForm.form.valid"> <img src="assets/images/paper-plane.png" width="40px" alt="travel Angular4 Demo App"/> </button>
+ [disabled]="!heroForm.form.valid"
+</div> -->

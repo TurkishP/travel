@@ -8,8 +8,18 @@
     }
 }
 
+.profImg {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    left: 34%;
+    top: 14%;
+}
+
 h1{
-    margin-left:30%;
+    margin-left:40%;
+    margin-bottom: 0;
 }
 
 #newloc{
@@ -17,9 +27,9 @@ h1{
 }
 
 #new{
-    margin-left: 30%;
+    margin-left: 40%;
     margin-bottom: 15px;
-    margin-top: 10px;
+    margin-top: 6px;
 }
 
 mat-tab-group{
@@ -35,19 +45,6 @@ mat-tab-group{
 #share{
     margin-left: 60px;
 }
-
-// .container{
-//     width: 80%;
-//     margin-left: 10%;
-//     margin-right: 10%;
-// }
-// mat-tab{
-//     width:33%;
-// }
-// .OnePlan{
-//     position: static;
-//     left:10px;
-// }
 
 .OneLocation{
     width: 350px;

@@ -51,6 +51,7 @@ export class PlanComponent implements OnInit {
   isHovering: boolean;
   likes: any;
   info: any;
+  profImg :string;
   // plans: Observable<any[]>;
 
   constructor(
@@ -70,6 +71,7 @@ export class PlanComponent implements OnInit {
         this.getLikes();
         this.planService.uid$.next(this.UID);
         this.dName = user.displayName;
+        this.profImg = user.photoURL;
 
       }
       
