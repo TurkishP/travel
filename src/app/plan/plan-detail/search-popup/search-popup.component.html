@@ -1,23 +1,55 @@
 
+<h1 *ngIf="savedLocations.info" >이 계획을 위해 저장한 곳들</h1>
+<button *ngIf="savedLocations.info" mat-button (click)="dropAll()">DROP ALL</button>
+<div class="searchContents">
+<div *ngFor="let location of savedLocations">
+    <mat-card class="searchCard" *ngIf="location.info">
+
+            <img mat-card-image src="{{location.info.img}}">
+            <div mat-card-avatar class="header-image"></div>
+            <div class="cardContent">
+                <mat-card-title>{{location.info.name}}</mat-card-title>
+                <mat-card-subtitle>{{location.info.city}} {{location.info.neighborhood}}</mat-card-subtitle>
+                <mat-card-content>{{location.info.content}}</mat-card-content>
+        
+                <mat-card-actions>
+                        <!-- <button routerLink="/plan-detail/{{plan.plan_id}}" mat-button>EDIT</button> -->
+                        <button mat-button (click)="add(location.id)">ADD</button>
+                        <button mat-button (click)="drop(location.id)">DROP</button>
+
+                </mat-card-actions>
+            </div>
+    </mat-card>
+</div>
+</div>
+<br>
+
+
 <mat-form-field>
-    <input matInput placeholder="SEARCH" #search>
-</mat-form-field>
+        <input matInput placeholder="SEARCH" #search>
+</mat-form-field>  
+
+<h1>검색 결과</h1>
+
 
     <div class="searchContents">
       <div *ngFor="let location of locations | async">
           <div *ngIf="location.name.includes(search.value)">
 
               <mat-card class="searchCard">
+
                       <img mat-card-image src="{{location.img}}">
                       <div mat-card-avatar class="header-image"></div>
-                      <mat-card-title>{{location.name}}</mat-card-title>
-                      <mat-card-subtitle>{{location.city}} {{location.neighborhood}}</mat-card-subtitle>
-                      <mat-card-content>{{location.content}}</mat-card-content>
-              
-                      <mat-card-actions>
-                              <!-- <button routerLink="/plan-detail/{{plan.plan_id}}" mat-button>EDIT</button> -->
-                              <button mat-button (click)="add(location.id)">ADD</button>
-                      </mat-card-actions>
+                    <div class="cardContent">
+                        <mat-card-title>{{location.name}}</mat-card-title>
+                        <mat-card-subtitle>{{location.city}} {{location.neighborhood}}</mat-card-subtitle>
+                        <mat-card-content>{{location.content}}</mat-card-content>
+                
+                        <mat-card-actions>
+                                <!-- <button routerLink="/plan-detail/{{plan.plan_id}}" mat-button>EDIT</button> -->
+                                <button mat-button (click)="add(location.id)">ADD</button>
+                        </mat-card-actions>
+                    </div>
               </mat-card>
           </div>
       </div>

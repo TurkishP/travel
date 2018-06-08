@@ -12,6 +12,7 @@ import {
 import { AngularFirestore } from 'angularfire2/firestore';
 import { tap, finalize } from 'rxjs/operators';
 import firebase from '@firebase/app';
+import { MatDialogRef } from '@angular/material';
 
 interface location {
   city: string;
@@ -59,18 +60,14 @@ export class NewLocaPopupComponent implements OnInit {
     private loca: LocationService,
     private afAuth: AngularFireAuth,
     private storage: AngularFireStorage,
-  
+    public dialogRef: MatDialogRef<NewLocaPopupComponent>,
+
   ) {
 
    }
 
   ngOnInit() {
-    // this.uidSUB = this.auth.UID.subscribe(
-    //   uid => this.UID = uid
-    // )
-    // this.usernameSUB = this.auth.userName.subscribe(
-    //   username => this.username = username
-    // )
+
     this.afAuth.authState.subscribe(user=>{
       if(user) this.UID = user.uid
       this.username = user.displayName
@@ -83,7 +80,8 @@ export class NewLocaPopupComponent implements OnInit {
     this.downloadURL.subscribe(result=>{
       this.loca.addLocation(this.username, this.UID, result, name, city, neighborhood, content);
     })
-    
+    this.dialogRef.close();
+
   }
 
   

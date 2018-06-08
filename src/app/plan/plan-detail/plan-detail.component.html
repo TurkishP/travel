@@ -16,9 +16,10 @@
                 <mat-panel-title>
                   Day {{day.id}}
                 </mat-panel-title>
-                <mat-panel-description (click)="map(day)">
+                <mat-panel-description >
                   Edit Locations 
                 </mat-panel-description>
+
               </mat-expansion-panel-header>
               <div *ngFor="let location of day.locations">
                   <div *ngIf="location.info">
@@ -35,32 +36,11 @@
                     </mat-card>
                   </div>
               </div>
-              <i mat-dialog-title class="material-icons" md-48 (click)="openDialog(this.plan_id, day.id)">add_circle_outline</i>
+              <div>
+                <i mat-dialog-title class="material-icons" md-48 (click)="openDialog(this.plan_id, day.id)">add_circle_outline</i>
+                <button id="mapButton" mat-raised-button (click)="map(day)">See Map</button>
+              </div>
             </mat-expansion-panel>
           </mat-accordion>
     </div>
 </div>
-
-
-<!-- <div *ngIf="plans">
-<mat-card>
-    <mat-grid-list cols="3">
-        <div *ngFor="let day of days | async">
-        <mat-grid-tile [style.border-right]="'1px dashed #ddd'">
-                Day {{day.id}}
-        </mat-grid-tile>
-     </div>
-    </mat-grid-list>
-  </mat-card>
-</div> -->
-<!-- <div *ngFor="let day of days">
-    <mat-card >
-      {{day.plan_id}}
-      <div *ngFor="let loca of day.loca">
-        <div *ngIf="loca.locationData">
-            <img [src]="loca.locationData.img">
-        </div>
-        
-      </div>
-      </mat-card>
-</div> -->

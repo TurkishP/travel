@@ -8,6 +8,7 @@ import { AuthService } from '../../core/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import * as firebase from 'firebase/app';
+import { LocForPlanComponent } from './loc-for-plan/loc-for-plan.component';
 
 
 @Component({
@@ -34,40 +35,21 @@ export class HomePageComponent implements OnInit {
     this.afAuth.authState.subscribe(user => {
       if (user) this.UID = user.uid
     })
-    /// this.gethashtag();
-    // this.add();
+
   }
-  
-  openinfo(name,city,neighborhood,img,content){
-    const dialogRef = this.dialog.open(LocInfoPopupComponent, {
-      data: {Name:name,City:city,Neigbor:neighborhood,Img:img,Content:content},
-      height: '800px',
-      width: '800px'
+
+
+  keepForPlanning(location_id: string){
+    const dialogRef = this.dialog.open(LocForPlanComponent, {
+      data: {location_id:location_id},
+      height: '60%',
+      width: '60%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`info result: ${result}`);
     });
   }
-
-  // add() {
-  //   console.log("h8i");
-
-  //   var content = document.getElementById('contents').innerHTML;
-  //   var splitedArray = content.split(' ');
-  //   var linkedContent = '';
-  //   console.log("테그테그");
-  //   for (var word in splitedArray) {
-  //     word = splitedArray[word];
-  //     if (word.indexOf('#') == 0) {
-  //       word = '<a href=\'링크\'>' + word + '</a>';
-  //       console.log("테그테그");
-  //     }
-  //     linkedContent += word + ' ';
-  //   }
-  //   document.getElementById('contents').innerHTML = linkedContent;
-
-  // }
 
   getlocations() {
     this.locations = this.loca.getLocations();

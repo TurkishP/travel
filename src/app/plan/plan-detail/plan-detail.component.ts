@@ -76,7 +76,7 @@ export class PlanDetailComponent implements OnInit, PipeTransform{
      this.planService.getPlanDays(plan_id)
      .subscribe(data=>{
       this.days = data;
-      console.log(data)
+      // console.log(data)
       for(let i = 0 ; i<this.days.length;i++){
          this.planService.getLocations(plan_id,this.days[i].id)
          .subscribe(data =>{
@@ -114,8 +114,6 @@ export class PlanDetailComponent implements OnInit, PipeTransform{
   }
 
   map(day:any){
-    console.log("HIHI")
-    console.log(day)
 
     this.mapView = 1;
     const dialogRef = this.dialog.open(MapPopupComponent, {
