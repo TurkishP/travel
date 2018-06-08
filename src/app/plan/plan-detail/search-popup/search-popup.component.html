@@ -1,5 +1,6 @@
 
-<h2>이 계획을 위해 저장한 곳들</h2>
+<h1 *ngIf="savedLocations.info" >이 계획을 위해 저장한 곳들</h1>
+<button *ngIf="savedLocations.info" mat-button (click)="dropAll()">DROP ALL</button>
 <div class="searchContents">
 <div *ngFor="let location of savedLocations">
     <mat-card class="searchCard" *ngIf="location.info">
@@ -14,6 +15,8 @@
                 <mat-card-actions>
                         <!-- <button routerLink="/plan-detail/{{plan.plan_id}}" mat-button>EDIT</button> -->
                         <button mat-button (click)="add(location.id)">ADD</button>
+                        <button mat-button (click)="drop(location.id)">DROP</button>
+
                 </mat-card-actions>
             </div>
     </mat-card>
@@ -26,7 +29,8 @@
         <input matInput placeholder="SEARCH" #search>
 </mat-form-field>  
 
-<h2>검색 결과</h2>
+<h1>검색 결과</h1>
+
 
     <div class="searchContents">
       <div *ngFor="let location of locations | async">
