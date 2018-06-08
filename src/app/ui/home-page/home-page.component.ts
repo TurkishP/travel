@@ -56,6 +56,10 @@ export class HomePageComponent implements OnInit {
 
   getlocations() {
     this.locations = this.loca.getLocations();
+    this.locations.subscribe(results=>{
+      console.log(results)
+    });
+
   }
 
   getTags(id:string){

@@ -19,7 +19,7 @@ interface location {
   timestamp: any;
   username?: string;
   uid: string;
-  tag?: string;
+  tag: string;
 }
 
 interface tag{}

@@ -30,9 +30,9 @@
                 <mat-card-title >{{location.name}}</mat-card-title>
                 <mat-card-subtitle>{{location.city}} {{location.neighborhood}}</mat-card-subtitle>
 
-                <mat-card-content>
+                <mat-card-content *ngIf="location.tag.length>1">
                   <mat-icon aria-label="Example icon-button with a heart icon">label_border</mat-icon>
-                  <strong *ngIf="location.tag">{{location.tag}}</strong>
+                  <strong >{{location.tag}}</strong>
                 </mat-card-content>
                 <div></div>
               </div>
