@@ -24,7 +24,20 @@ img{
     position: absolute;
     margin-left: 257px;
     top:3px;
+    left:1px;
+    //padding:10px,10px;
+    width:2px;
 }
+button:hover{
+    color:blue;
+}
+
+#likei{
+    margin-right:0px;
+}
+
+
+
 
 #addForPlan{
     position: absolute;
@@ -51,4 +64,13 @@ mat-card-image{
     position: absolute;
     bottom: 0px;
     // left: 7px;
+}
+
+#search{
+    color: #3245B0;
+}
+
+#searchform{
+   // border-width: 100px;
+    width: 25%;
 }

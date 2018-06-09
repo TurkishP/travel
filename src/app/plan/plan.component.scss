@@ -8,6 +8,7 @@
     }
 }
 
+
 .profImg {
     border-radius: 50%;
     width: 70px;
@@ -23,7 +24,7 @@ h1{
 }
 
 #newloc{
-    margin-left: 10px;
+    margin-left: 3px;
 }
 
 #new{
@@ -60,4 +61,36 @@ height: 200px;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+}
+
+button{
+    //background-color: #d9e1e8;
+   // border: 1px solid #DADBF0;
+   color:#3245B0;
+   font-weight:bold;
+}
+
+button:hover {
+    //color: rgba(255, 255, 255, 0.85);
+    color:#3245B0;
+
+    //color:#d9e1e8;
+    //box-shadow:  #3245B0 0 0px 0px 40px inset;
+}
+
+mat-card{
+   //background: #F8FAFF;
+   
+}
+
+mat-card-title{
+    color: #282c37;
+}
+
+.diabtn{
+    
+}
+
+.diabtn:hover{
+    color:#3245B0;
 }
