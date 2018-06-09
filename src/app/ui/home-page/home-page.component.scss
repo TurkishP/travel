@@ -9,9 +9,6 @@
 
 }
 
-img{
-    height: 200px;
-}
 
 .displayContents{
     display: flex;
@@ -42,13 +39,16 @@ mat-card-title{
     margin-bottom: 0;
 }
 
-mat-card-image{
-    margin-bottom: -20px;
-}
+
 
 .cardContent{
     // margin-top: 200px;
     position: absolute;
     bottom: 0px;
     left: 7px;
+}
+
+.cont{
+    width:300px;
+    height: 200px;
 }
