@@ -4,11 +4,17 @@
 
 .card{
     width: 300px;
-    // height: 350px;
+    height: 280px;
     margin: 10px 10px 10px 0;
 
 }
 
+img{
+    height: 200px;
+    position:absolute;
+    left:25px;
+    top:25px;
+}
 
 .displayContents{
     display: flex;
@@ -20,13 +26,13 @@
 #like{
     position: absolute;
     margin-left: 257px;
-    top:3px;
+    bottom:10px;
 }
 
 #addForPlan{
     position: absolute;
     margin-left: 257px;
-    top:33px;
+    bottom:35px;
 }
 
 .contents{
@@ -35,20 +41,23 @@
     margin-right:3%;
 }
 
-mat-card-title{
-    margin-bottom: 0;
-}
-
-
-
-.cardContent{
-    // margin-top: 200px;
+.mat-card-title{
     position: absolute;
-    bottom: 0px;
-    left: 7px;
+    bottom: 15px;
+    left: 13px;
 }
 
-.cont{
-    width:300px;
-    height: 200px;
+.tags{
+    position: absolute;
+    bottom: 13px;
+    left: 13px;
 }
+
+
+
+// .cardContent{
+//     // margin-top: 200px;
+//     position: absolute;
+//     bottom: 0px;
+//     // left: 7px;
+// }
