@@ -22,6 +22,7 @@ export class SearchPopupComponent implements OnInit {
 
 
   constructor(
+    public dialogRef: MatDialogRef<SearchPopupComponent>,
     public locationService: LocationService,
     public planService : PlanService,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -57,6 +58,19 @@ export class SearchPopupComponent implements OnInit {
     })
   }
 
+  drop(location_id: string){
+    this.db.collection('plan_folder').doc(this.data.planID).collection('pinnedLocations').doc(location_id).delete();
+
+  }
+
+  dropAll(){
+    let count = this.savedLocations.length;
+    for(let x=0; x<count;x++){
+      this.drop(this.savedLocations[x].id);
+    }
+    
+  }
+
   add(locationId){
     console.log(locationId,this.data.planID, this.data.Day)
     let days = this.db.collection('plan_folder').doc(this.data.planID).collection('days').snapshotChanges().pipe(
@@ -76,6 +90,8 @@ export class SearchPopupComponent implements OnInit {
         duration: 1300,
       })
    });
+   
+   this.dialogRef.close();
   }
   
 

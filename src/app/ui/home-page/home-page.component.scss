@@ -3,39 +3,39 @@
 }
 
 .card{
-    width: 500px;
+    width: 300px;
     // height: 350px;
     margin: 10px 10px 10px 0;
 
 }
 
 img{
-     //height: 50%;
-    width: 100%;
+    height: 200px;
 }
 
 .displayContents{
-    //display: flex;
-    //flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
 
 }
 
 #like{
-    // position: absolute;
-    margin-left: 170px;
-    top:315px;
+    position: absolute;
+    margin-left: 257px;
+    top:3px;
 }
 
 #addForPlan{
     position: absolute;
-    margin-left: 140px;
+    margin-left: 257px;
     top:33px;
 }
 
 .contents{
-    width: 100%;
-  
+    width: 80%;
+    margin-left:17%;
+    margin-right:3%;
 }
 
 mat-card-title{
@@ -43,67 +43,12 @@ mat-card-title{
 }
 
 mat-card-image{
-//     margin-bottom: -20px;
-    //  margin: 0; 
-
+    margin-bottom: -20px;
 }
+
 .cardContent{
     // margin-top: 200px;
     position: absolute;
     bottom: 0px;
-    // left: 7px;
+    left: 7px;
 }
-// main {
-//     box-sizing: border-box;
-//   }
-  
-//   *,
-//   *:before,
-//   *:after {
-//     box-sizing: inherit;
-//   }
-  
-  /* The Masonry Container */
-  .masonry {
-    //margin: 1.5em auto;
-     max-width: 100%;
-    // column-gap: 1em;
-    //display: flex;
-    // flex-wrap: wrap;
-    //width: 100%;
-    // display: flex;
-    flex-flow: column wrap;
-
-  }
-  
-  /* The Masonry Brick */
-  .item {
-    // background: #aa2;
-    // padding: 1em;
-    // margin: 0 0 1em;
-    // height: auto;
-    flex: 1 1 250px;;
-    display: inline-block;
-    max-width: 100%;
-  }
-  
-  /* Masonry on large screens */
-  @media only screen and (min-width: 1024px) {
-    .masonry {
-      column-count: 4;
-    }
-  }
-  
-  /* Masonry on medium-sized screens */
-  @media only screen and (max-width: 1023px) and (min-width: 768px) {
-    .masonry {
-      column-count: 3;
-    }
-  }
-  
-  /* Masonry on small screens */
-  @media only screen and (max-width: 767px) and (min-width: 540px) {
-    .masonry {
-      column-count: 2;
-    }
-  }

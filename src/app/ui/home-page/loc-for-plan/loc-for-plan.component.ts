@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { LocationService } from '../../../core/location.service';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -30,7 +30,9 @@ export class LocForPlanComponent implements OnInit {
     private afs: AngularFirestore,
     private loca: LocationService,
     private plan: PlanService,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    public dialogRef: MatDialogRef<LocForPlanComponent>,
+
   ) {    this.afAuth.authState.subscribe(user=>{
     if(user) {this.UID = user.uid
       this.plan.uid$.next(this.UID);
@@ -55,5 +57,7 @@ export class LocForPlanComponent implements OnInit {
     this.afs.collection('plan_folder').doc(plan_id).collection('pinnedLocations').doc(this.data.location_id).set({
       hi: "hi"
     });
+    this.dialogRef.close();
+
   }
 }

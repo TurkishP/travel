@@ -42,8 +42,8 @@ export class HomePageComponent implements OnInit {
   keepForPlanning(location_id: string){
     const dialogRef = this.dialog.open(LocForPlanComponent, {
       data: {location_id:location_id},
-      height: '90%',
-      width: '90%'
+      height: '60%',
+      width: '60%'
     });
 
     dialogRef.afterClosed().subscribe(result => {

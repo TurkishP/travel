@@ -11,6 +11,7 @@ import {
 } from 'angularfire2/storage';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { tap, finalize } from 'rxjs/operators';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'newplan-popup',
@@ -41,6 +42,9 @@ export class NewplanPopupComponent implements OnInit {
     private plan: PlanService,
     private afAuth: AngularFireAuth,
     private storage: AngularFireStorage,
+    public dialogRef: MatDialogRef<NewplanPopupComponent>,
+
+
 
   ) { }
 
@@ -55,7 +59,7 @@ export class NewplanPopupComponent implements OnInit {
   newPlan(name:string, days: number, content:string ){
     console.log(this.UID, content, name, days)
     this.plan.newPlan(this.UID, name, days, content);
-    
+    this.dialogRef.close();
   }
 
 

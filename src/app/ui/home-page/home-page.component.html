@@ -16,15 +16,12 @@
 
 
 
-
-<div class="main">
-
-<div class="masonry">
-  <div *ngFor="let location of locations | async" class="item">
+<div class="displayContents">
+  <div *ngFor="let location of locations | async">
     <div *ngIf="location.name.includes(search.value)">
 
-        <mat-card class="card ">
-          <span (click)="detailPopup(location.id)">
+        <mat-card class="card">
+          <div (click)="detailPopup(location.id)">
                 <img mat-card-image src="{{location.img}}">
                 <div mat-card-avatar class="header-image"></div>
                 <div  class="cardContent" >
@@ -32,19 +29,18 @@
                     <mat-card-subtitle>{{location.city}} {{location.neighborhood}}</mat-card-subtitle>
                 </div>
                 <!-- <mat-card-content>{{location.content}}</mat-card-content> -->
-            </span>  
+         </div>  
                 <mat-card-actions>
                         
                         <!-- <button mat-button (click)="add(location.id)">ADD</button> -->
                         <!-- <button mat-button (click)="deleteLocation(location.id)" >DELETE</button> -->
-                        <i id="like" mat-dialog-title class="material-icons" md-48 (click)="like(location.id)">star_border</i>
-                        <i id="addForPlan" mat-dialog-title class="material-icons" md-48 (click)="keepForPlanning(location.id)">collections_bookmark</i>
+                        <!-- <i id="like" mat-dialog-title class="material-icons" md-48 (click)="like(location.id)">star_border</i>
+                        <i id="addForPlan" mat-dialog-title class="material-icons" md-48 (click)="keepForPlanning(location.id)">collections_bookmark</i> -->
 
                 </mat-card-actions>
         </mat-card>
     </div>
   </div>
-</div>
 </div>
 
 </div> 
