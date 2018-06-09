@@ -46,7 +46,7 @@ export class SearchPopupComponent implements OnInit {
     .subscribe(data=>{
       // console.log(data)
         this.savedLocations = data;
-        
+        console.log(this.savedLocations);
         for(let i = 0 ; i<this.savedLocations.length;i++){
           this.planService.getLocationInfo(data[i].id)
           .ref.get().then(doc=>{

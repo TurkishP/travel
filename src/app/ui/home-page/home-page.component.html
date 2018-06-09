@@ -21,7 +21,7 @@
     <div class="displayContents"  >
       <div *ngFor="let location of locations | async">
         <div *ngIf="location.name.includes(search.value)">
-          <mat-card class="card">
+          <mat-card class="card" *ngIf="location.img">
             <div (click)="detailPopup(location.id)">
 
 

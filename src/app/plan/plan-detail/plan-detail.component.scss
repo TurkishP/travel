@@ -4,12 +4,27 @@
 //     position
 // }
 
-.dayCard{
-    margin-bottom: 15px;
+.flex{
+    display: flex;
+    flex-wrap: wrap;
 }
 
+.dayCard{
+    margin-bottom: 15px;
+    width: 300px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.card_content{
+    margin-top: 197px;
+
+}
 img{
-    width: 200px;
+    height: 200px;
+    position:absolute;
+    left:25px;
+    top:25px;
 }
 
 .container{
@@ -35,4 +50,30 @@ img{
 
 i{
     margin-top:5px;
+    margin-left: 15px;
+
+}
+
+#delete{
+    position:absolute;
+    right: 13px;
+    top: 210px;
+}
+
+
+.mat-card-actions{
+    margin-bottom: 0;
+    padding:0;
+}
+
+.mat-card-content{
+    margin-bottom: 0;
+
+}
+.mat-card-title{
+    margin-bottom: 10px;
+
+}
+.mat-card-subtitle{
+    margin-bottom: 0;
 }

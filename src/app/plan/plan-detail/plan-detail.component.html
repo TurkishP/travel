@@ -21,21 +21,28 @@
                 </mat-panel-description>
 
               </mat-expansion-panel-header>
-              <div *ngFor="let location of day.locations">
-                  <div *ngIf="location.info">
+              <div class="flex">
+              <div *ngFor="let location of day.locations" >
+                  <div *ngIf="location.info" >
                       <mat-card class="dayCard">
                         <img mat-card-image src="{{location.info.img}}">
+
+                        <div class="card_content">
                         <!-- <div mat-card-avatar class="header-image"></div> -->
                         <mat-card-title>{{location.info.name | uppercase }} {{location.order}}</mat-card-title>
                         <mat-card-subtitle>{{location.info.city}} {{location.info.neighborhood}}</mat-card-subtitle>
                         <mat-card-content>{{location.info.content}}</mat-card-content>
                 
                         <mat-card-actions>
-                          <button mat-button (click)="deleteLocationInPlan(day.id, location.id)">DELETE</button>
+                          <!-- <button mat-button (click)="deleteLocationInPlan(day.id, location.id)">DELETE</button> -->
+                          <i  id="delete" mat-dialog-title class="material-icons" md-48 (click)="deleteLocationInPlan(day.id, location.id)">delete</i>
+
                         </mat-card-actions>
+                      </div>
                     </mat-card>
                   </div>
               </div>
+            </div>
               <div>
                 <i mat-dialog-title class="material-icons" md-48 (click)="openDialog(this.plan_id, day.id)">add_circle_outline</i>
                 <button id="mapButton" mat-raised-button (click)="map(day)">See Map</button>

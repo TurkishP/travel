@@ -1,6 +1,5 @@
 .searchCard{
     width: 350px;
-    height: 400px;
     margin-bottom: 10px;
     margin-right: 10px;
 }
@@ -10,24 +9,45 @@
     flex-wrap: wrap;
 }
 
+#addForPlan{
+    margin-right: 5px;
+}
+
 img{
     height: 200px;
+    position:absolute;
+    left:25px;
+    top:25px;
+}
+
+.dropButton{
+    margin-bottom: 15px;
 }
 
 .cardContent{
-    position: absolute;
-    bottom: 0px;
-    left: 15px;
+    margin-top: 150px;
+
 }
 
-mat-card-title{
+.mat-card-actions{
+    position: absolute;
+    top: 220px;
+
+    right: 30px;
+    padding:0;
+}
+
+.mat-card-content{
+    margin-bottom: 0;
+
+}
+.mat-card-title{
+    margin-bottom: 10px;
+
+}
+.mat-card-subtitle{
     margin-bottom: 0;
 }
-
-mat-card-content{
-    margin-bottom: 0px;
-}
-
 h1{
     margin-bottom: 15px;
 }

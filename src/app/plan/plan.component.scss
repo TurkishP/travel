@@ -47,17 +47,69 @@ mat-tab-group{
 }
 
 .OneLocation{
-    width: 350px;
+    width: 340px;
     // height: 350px;
-    margin: 10px 10px 10px 0;
+    margin: 10px 10px 10px 3px;
 }
 
+.likeCards{
+    // height: 340px;
+    width: 340px;
+    margin: 10px 10px 10px 3px;
+}
 img{
-height: 200px;
+    height: 200px;
+    position:absolute;
+    left:25px;
+    top:25px;
 }
 
 .displayContents{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+}
+
+.card_content{
+    margin-top: 200px;
+}
+
+#card_content{
+    margin-top: 150px;
+}
+
+.mat-card-actions{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.mat-card-content{
+    margin-bottom: 0;
+
+}
+.mat-card-title{
+    margin-bottom: 10px;
+
+}
+.mat-card-subtitle{
+    margin-bottom: 0;
+}
+
+#delete{
+    position:absolute;
+    right: 13px;
+    top: 213px;
+}
+
+#delete2{
+    position:absolute;
+    right: 13px;
+    top: 230px;
+}
+
+#locationEdit{
+    position: absolute;
+    top: 230px;
+    right: 33px;
+    margin-right: 5px;
 }

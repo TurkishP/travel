@@ -1,6 +1,6 @@
 
-<h1 *ngIf="savedLocations.info" >이 계획을 위해 저장한 곳들</h1>
-<button *ngIf="savedLocations.info" mat-button (click)="dropAll()">DROP ALL</button>
+<h1 *ngIf="savedLocations.length>0" >이 계획을 위해 저장한 곳들</h1>
+<button *ngIf="savedLocations.length>1" mat-button class="dropButton" (click)="dropAll()">DROP ALL</button>
 <div class="searchContents">
 <div *ngFor="let location of savedLocations">
     <mat-card class="searchCard" *ngIf="location.info">
@@ -14,8 +14,9 @@
         
                 <mat-card-actions>
                         <!-- <button routerLink="/plan-detail/{{plan.plan_id}}" mat-button>EDIT</button> -->
-                        <button mat-button (click)="add(location.id)">ADD</button>
-                        <button mat-button (click)="drop(location.id)">DROP</button>
+
+                        <i id="addForPlan" mat-dialog-title class="material-icons" md-48 (click)="add(location.id)">control_point</i>
+                        <i  mat-dialog-title class="material-icons" md-48 (click)="drop(location.id)">delete</i>
 
                 </mat-card-actions>
             </div>
@@ -47,7 +48,7 @@
                 
                         <mat-card-actions>
                                 <!-- <button routerLink="/plan-detail/{{plan.plan_id}}" mat-button>EDIT</button> -->
-                                <button mat-button (click)="add(location.id)">ADD</button>
+                                <i  mat-dialog-title class="material-icons" md-48 (click)="add(location.id)">control_point</i>
                         </mat-card-actions>
                     </div>
               </mat-card>
