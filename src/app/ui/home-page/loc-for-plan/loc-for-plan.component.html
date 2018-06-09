@@ -9,7 +9,9 @@
                   <!-- <mat-card-content> {{plan.id}}</mat-card-content> -->
 
                   <mat-card-actions>
-                    <button mat-button (click)="keepForPlan(plan.id)">This One!</button>
+                    <button mat-button (click)="keepForPlan(plan.id)">
+                        <i id="mark" mat-dialog-title class="material-icons" md-48 >bookmark</i>
+                    </button>
                     <!-- <i id="share" mat-dialog-title class="material-icons" md-18>share</i> -->
                     <!-- <button mat-button *ngIf= "isAuth" (click)="liked()">LIKE</button> -->
                   </mat-card-actions>

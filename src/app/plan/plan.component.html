@@ -4,8 +4,12 @@
 
 
 <div id="new">
-      <i mat-dialog-title class="material-icons" md-48 (click)="openDialog()">add_circle_outline</i> New Plan
-      <i id="newloc" mat-dialog-title class="material-icons" md-48 (click)="openDialog2()">add_circle_outline</i> Add Location
+      <button class="diabtn" mat-button (click)="openDialog()">
+            <i mat-dialog-title class="material-icons" md-48  >add_circle_outline</i> New Plan
+      </button>
+      <button class="diabtn"  mat-button (click)="openDialog2()">
+            <i id="newloc" mat-dialog-title class="material-icons" md-48>add_circle_outline</i> Add Location
+      </button>
       <img class="profImg" src="{{this.profImg}}" width="50px" alt="travel Angular4 Demo App"/>
 
 </div>
@@ -25,8 +29,8 @@
                 <!-- <mat-card-content>{{hero.content}}</mat-card-content> -->
         
                 <mat-card-actions>
-                  <button routerLink="/plan-detail/{{plan.id}}" mat-button>EDIT</button>
-                  <button mat-button (click)="deletePlan(plan.id)">DELETE</button>
+                 <button class="btn" routerLink="/plan-detail/{{plan.id}}" mat-button>EDIT</button>
+                  <button class="btn" mat-button (click)="deletePlan(plan.id)" >DELETE</button>
                   <i id="share" mat-dialog-title class="material-icons" md-18>share</i>
                   <!-- <button mat-button *ngIf= "isAuth" (click)="liked()">LIKE</button> -->
                 </mat-card-actions>

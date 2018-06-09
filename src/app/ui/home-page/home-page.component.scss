@@ -25,14 +25,26 @@ img{
 
 #like{
     position: absolute;
-    margin-left: 257px;
-    bottom:10px;
+    right: -18px;
+    top: 210px;
 }
 
+button:hover{
+    color:blue;
+}
+
+#likei{
+    margin-right:0px;
+}
+
+
+
+
 #addForPlan{
+
     position: absolute;
-    margin-left: 257px;
-    bottom:35px;
+    right: 15px;
+    top: 242px;
 }
 
 .contents{
@@ -124,3 +136,19 @@ mat-card-image{
     #search_bar{
         width:25%
     }
+    
+// .cardContent{
+//     // margin-top: 200px;
+//     position: absolute;
+//     bottom: 0px;
+//     // left: 7px;
+// }
+
+// #search{
+//     color: #3245B0;
+// }
+
+#searchform{
+   // border-width: 100px;
+    width: 25%;
+}
