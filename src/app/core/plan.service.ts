@@ -70,7 +70,7 @@ export class PlanService {
           })
         )));
 
- }
+}
 
 
 getMyPlans(): Observable<any[]> {
@@ -82,7 +82,7 @@ getMyPlans(): Observable<any[]> {
         });
       })
     );
-}
+  }
 
   newPlan(UID: string, name: string, days: number, content: string){
     let plan: plan = {
@@ -123,7 +123,6 @@ getMyPlans(): Observable<any[]> {
         })
       })
     );
-
   }
 
   getLocations(plan_id:string, day_id: string): Observable<any[]>{
