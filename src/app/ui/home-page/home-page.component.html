@@ -9,15 +9,25 @@
 
 
 <body>
-  <div class="contents">
-    <h1>Excited to discover new places?</h1>
 
-    <mat-form-field>
+    
+<div class="slogan">
+  
+  <div id ="slogan-title"><font family=Lato size = 6 color=#696969>T R A V E L</font>
+  </div>
+  
+  <div class="search_box">
+    <mat-form-field id="search_bar">
       <input matInput placeholder="Excited to discover new places?" #search>
     </mat-form-field>
+  </div>
 
-
-
+  <hr class = "sloganline">
+  <div id ="slogan-content"><font family=Roboto size = 2 color=#333333>내가 갔던 여행지를 공유하고<br>다른 여행지의 정보들을 얻을 수 있는<br>여행 정보 사이트</font>
+  </div> 
+</div>
+  
+  <div class = "contents">
     <div class="displayContents"  >
       <div *ngFor="let location of locations | async">
         <div *ngIf="location.name.includes(search.value)">
@@ -48,9 +58,9 @@
             </mat-card-actions>
           </mat-card>
         </div>
-      </div>
+      
 
-
+    </div>
     </div>
   </div>
 </body>
