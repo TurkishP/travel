@@ -11,7 +11,7 @@ import {
 } from 'angularfire2/storage';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { tap, finalize } from 'rxjs/operators';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 declare const naver: any;
 
 @Component({
@@ -50,6 +50,7 @@ export class MapPopupComponent implements OnInit {
     private afAuth: AngularFireAuth,
     private storage: AngularFireStorage,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<MapPopupComponent>,
 
   ) { }
 

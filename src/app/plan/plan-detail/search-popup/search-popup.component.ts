@@ -29,7 +29,6 @@ export class SearchPopupComponent implements OnInit {
     public db: AngularFirestore,
     public snackBar: MatSnackBar,
 
-  
   ){
   }
 
@@ -73,14 +72,15 @@ export class SearchPopupComponent implements OnInit {
 
   add(locationId){
     console.log(locationId,this.data.planID, this.data.Day)
-    let days = this.db.collection('plan_folder').doc(this.data.planID).collection('days').snapshotChanges().pipe(
-      map((actions)=>{
-        return actions.map((a)=>{
-          const data = a.payload.doc.data();
-          return {...data};
-        })
-      })
-    );
+    //여기서 가져다씀 
+  //  // let days = this.db.collection('plan_folder').doc(this.data.planID).collection('days').snapshotChanges().pipe(
+  //     map((actions)=>{
+  //       return actions.map((a)=>{
+  //         const data = a.payload.doc.data();
+  //         return {...data};
+  //       })
+  //     })
+  //   );
 
     // console.log(days.day);
     this.db.collection('plan_folder').doc(this.data.planID).collection('days').doc(this.data.Day).collection('locations').doc(locationId).set({
@@ -94,5 +94,4 @@ export class SearchPopupComponent implements OnInit {
    this.dialogRef.close();
   }
   
-
 }

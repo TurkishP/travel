@@ -55,6 +55,7 @@ export class LocInfoPopupComponent implements OnInit {
 
   getComments(){
       this.comments=this.loca.getComments(this.data.locID);
+      console.log(this.comments);
   }
 
   deleteComment(comment_id:string, writer_uid:string){
@@ -67,6 +68,5 @@ export class LocInfoPopupComponent implements OnInit {
 
   }
 
-  
   //comments 가져오는 함수 구현해야함
 }

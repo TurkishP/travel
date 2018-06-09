@@ -1,5 +1,5 @@
 .new-location{
-    width: 200px;
+    width: 300px;
 }
 
 .card{
@@ -20,7 +20,7 @@ img{
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-
+    
 }
 
 #like{
@@ -36,9 +36,12 @@ img{
 }
 
 .contents{
+    padding-left: 35px;
+    padding-right: 28.8px;
+    padding-top: 20px;
     width: 80%;
-    margin-left:17%;
-    margin-right:3%;
+    margin-left:15%;
+    margin-right:17%;
 }
 
 .mat-card-title{
@@ -53,7 +56,9 @@ img{
     left: 13px;
 }
 
-
+mat-card-image{
+    margin-bottom: -20px;
+}
 
 // .cardContent{
 //     // margin-top: 200px;
@@ -61,3 +66,61 @@ img{
 //     bottom: 0px;
 //     // left: 7px;
 // }
+
+.void{
+    height: 65px;
+    width: 100%
+  }
+  
+    .slogan{
+      background-color: #f0f0f0;
+      height: 300px;
+      width:100%;
+      border-bottom: 1px solid #E4E4E4;
+      box-shadow: 0 0 4px rgba(0,0,0,.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  
+    #slogan-leftbox{
+      width:50%;
+      float: left;
+    }
+    // #slogan-rightbox{
+    //   width: 50%;
+    //   float: right;
+    // }
+    #slogan-title{
+      position: relative;
+      top: 50px;
+      left: 100px;
+     }
+     hr.sloganline{
+      position: relative;
+      width: 50px;
+      top: 0px;
+      left:100px;
+      text-align: left;
+      margin-left: 0;
+      margin-top: 30px;
+      margin-bottom: 0px;
+      color: #c4c4c4;
+    }
+    #slogan-content{
+      position: relative;
+      top: 10px;
+      left:100px;
+    }
+    #slogan-image{
+      position: relative;
+      top:25px;
+      left:120px;
+    }
+
+    .search_box{
+        margin-top:50px;
+        margin-left:100px;
+       
+    }
+
+    #search_bar{
+        width:25%
+    }

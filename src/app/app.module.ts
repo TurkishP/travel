@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { FormsModule }   from '@angular/forms';
 
 // travel App Modules
 import { CoreModule } from './core/core.module';
@@ -46,6 +47,7 @@ import { MaterialModule } from './material.module';
     AngularFireFunctionsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     MaterialModule,
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })

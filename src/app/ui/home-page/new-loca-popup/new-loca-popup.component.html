@@ -46,8 +46,11 @@
         <mat-form-field>
           <input matInput placeholder="Content" #content>
         </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="tag ex)뚜벅이여행, 겨울여행" #tag>
+        </mat-form-field>
         
-        <button mat-raised-button id="submitButton" (click)="newLocation(name.value, city.value, neighborhood.value, content.value)">Submit</button>
+        <button mat-raised-button id="submitButton" (click)="newLocation(name.value, city.value, neighborhood.value, content.value,tag.value)">Submit</button>
       </div>
 </div>
 </div>
